@@ -1,6 +1,6 @@
 https://sakusanpuwan.github.io/hack-4-change-axis/
 
-git clone
+git clone https://github.com/sakusanpuwan/hack-4-change-axis.git
 
 npm install - install node modules
 
