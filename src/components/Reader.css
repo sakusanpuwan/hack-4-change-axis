@@ -1,0 +1,21 @@
+.input-text {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#inputTextBox {
+    display: flex;
+    justify-content: center;
+    height: 150px;
+    width: 500px;
+    font-size: 10pt;
+    padding: 15px;
+}
+
+#textFormatButton {
+    margin-top: 20px;
+}
+
+#outputText {
+    line-height: 20pt;   
+}
