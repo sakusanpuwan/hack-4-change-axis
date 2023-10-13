@@ -66,16 +66,16 @@ const Reader = () => {
                     <textarea type="text" id="inputTextBox" value={inputText} onChange={(handleChange)}/>
                         <div className="text-format-section">
                             <div className="playback-section">
-                                <button id="listenButton" onClick={handleListen}>Listen Back</button>
                                 <p>Set playback speed:</p>
                                 <input type="range" id="playbackSpeed" min="0.5" max="2" step="0.5" value={playbackSpeed} onChange={handleSpeed}/>
+                                <button id="listenButton" onClick={handleListen}>Listen Back</button>
                                 <button id="pauseButton" onClick={handlePause}>Pause</button>
                                 <button id="resumeButton" onClick={handleResume}>Resume</button>
                             </div>
                             <div className="bionic-section">
-                                <button id="bionicButton" onClick={handleBionic}>Generate Bionic</button>
                                 <p>Change Bionic fixation point:</p>
                                 <input type="range" id="fixationPoint" min="1" max="5" value={fixationPoint} onChange={handleFixation}/>
+                                <button id="bionicButton" onClick={handleBionic}>Generate Bionic</button>
                             </div>        
                         </div> 
                 </form>

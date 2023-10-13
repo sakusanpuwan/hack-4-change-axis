@@ -21,7 +21,7 @@
 }
 
 .text-format-section {
-    margin-left: 40px;
+    margin-left: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -30,7 +30,6 @@
 .playback-section {
     display: flex;
     justify-content: flex-start;
-    margin-top: 20px;
 }
 
 .bionic-section {
@@ -40,9 +39,10 @@
 }
 
 #listenButton {
-    margin-right: 10px;
-    width: 120px;
-    height: 40px;
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 100px;
+    height: 30px;
 }
 
 #playbackSpeed {
@@ -64,9 +64,10 @@
 }
 
 #bionicButton {
-    margin-right: 10px;
+    margin-top: 10px;
+    margin-left: 10px;
     width: 120px;
-    height: 40px;
+    height: 30px;
 }
 
 #fixationPoint {
