@@ -7,14 +7,18 @@ const Reader = () => {
 
     const [inputText, setInputText] = useState([]);
     const [outputText, setOutputText] = useState([]);
-    const [fixationPoint, setFixationPoint] = useState([]);
+
+    const [fixationPoint, setFixationPoint] = useState(2);
+
+    const textToSpeech = new SpeechSynthesisUtterance(inputText);
+    const [playbackSpeed, setPlaybackSpeed] = useState(1);
 
 
     const handleChange = (event) => {
         setInputText(event.target.value)
     }
 
-    const handleSubmit = (event) => {
+    const handleBionic = (event) => {
         event.preventDefault();
         const bionic = textVide(inputText);
         setOutputText(bionic);
@@ -25,24 +29,57 @@ const Reader = () => {
         const bionic = textVide(inputText, {fixationPoint: fixationPoint});
         setOutputText(bionic);
     }
+
+    // different accents/languages - if we had translated text
+    // const voices = window.speechSynthesis.getVoices(); 
+    // textToSpeech.voice=voices[3]; // .lang 
+
+    const handleSpeed = (event) => {
+        setPlaybackSpeed(event.target.value)
+    }
     
-    console.log(textVide(inputText))
+    // at the moment - speed only changes onClick of "Listen Back" button
+    // speed changes only to read the whole text from the beginning
+    const handleListen = (event) => {
+        event.preventDefault();
+        textToSpeech.rate = playbackSpeed; 
+        window.speechSynthesis.speak(textToSpeech);
+    }
+
+    // on pause should probably be able to change speed 
+    const handlePause = (event) => {
+        event.preventDefault();
+        window.speechSynthesis.pause();
+    }
+
+    const handleResume = (event) => {
+        event.preventDefault();
+        textToSpeech.rate = playbackSpeed;
+        window.speechSynthesis.resume(textToSpeech);
+    }
 
     return (
         <div>
             <h1>Reader</h1>
             <div className="input-text">
-                <form onSubmit={handleSubmit}>
-                    <textarea type="text" id="inputTextBox" value={inputText} onChange={handleChange}/>
-                    <button id="textFormatButton">Generate!</button>
+                <form className="whole-thing">
+                    <textarea type="text" id="inputTextBox" value={inputText} onChange={(handleChange)}/>
+                        <div className="text-format-section">
+                            <div className="playback-section">
+                                <button id="listenButton" onClick={handleListen}>Listen Back</button>
+                                <p>Set playback speed:</p>
+                                <input type="range" id="playbackSpeed" min="0.5" max="2" step="0.5" value={playbackSpeed} onChange={handleSpeed}/>
+                                <button id="pauseButton" onClick={handlePause}>Pause</button>
+                                <button id="resumeButton" onClick={handleResume}>Resume</button>
+                            </div>
+                            <div className="bionic-section">
+                                <button id="bionicButton" onClick={handleBionic}>Generate Bionic</button>
+                                <p>Change Bionic fixation point:</p>
+                                <input type="range" id="fixationPoint" min="1" max="5" value={fixationPoint} onChange={handleFixation}/>
+                            </div>        
+                        </div> 
                 </form>
             </div>
-            <div className="bionic-section">
-                <h2>BIONIC Output</h2>
-                <p>Change fixation point:</p>
-                <input type="range" id="fixationPoint" min="1" max="5" value={fixationPoint} onChange={handleFixation}/>
-            </div>        
-
             <p id="outputText">{ReactHtmlParser(outputText)}</p>
         </div>
     )

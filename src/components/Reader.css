@@ -1,6 +1,14 @@
 .input-text {
     display: flex;
-    justify-content: space-evenly;
+    /* flex-direction: row; */
+    justify-content: space-around;
+    
+}
+
+.whole-thing {
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
 }
 
 #inputTextBox {
@@ -12,10 +20,63 @@
     padding: 15px;
 }
 
-#textFormatButton {
+.text-format-section {
+    margin-left: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.playback-section {
+    display: flex;
+    justify-content: flex-start;
     margin-top: 20px;
 }
 
+.bionic-section {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 20px;
+}
+
+#listenButton {
+    margin-right: 10px;
+    width: 120px;
+    height: 40px;
+}
+
+#playbackSpeed {
+    margin-left: 10px;
+}
+
+#pauseButton {
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 70px;
+    height: 30px;
+}
+
+#resumeButton {
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 70px;
+    height: 30px;
+}
+
+#bionicButton {
+    margin-right: 10px;
+    width: 120px;
+    height: 40px;
+}
+
+#fixationPoint {
+    margin-left: 10px;
+}
+
 #outputText {
+    margin-top: 30px;
+    margin-left: 40px;
+    margin-right: 40px;
     line-height: 20pt;   
 }
+
