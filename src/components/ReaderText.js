@@ -22,13 +22,16 @@ const ReaderText = () => {
 
     // have some kind of handling, eg please try again, if GPT response was not as expected
     // sometimes doesn't pick up on the prompt and returns nonsense - need to click generate again
+    // if GPT response contains "I'm sorry" - prompt user to try again
+
+    // sometimes still returns keywords separated by numbers - need logic to handle that
     const handleKeywords = async (event) => {
         event.preventDefault();
         const keywordsPrompt = "find 10 single-word keywords (nouns or verbs) from the text bellow, return keywords exactly how they were in the text, separated by comma::\n\n" + inputText; 
         setPrompt(keywordsPrompt)
         setIsLoading(true)
         const response = await fetchGPTResponse(prompt); 
-        const keywordsSplit = response.split(", "); 
+        const keywordsSplit = response.split(", "); // need logic to split if keywords returned are numbered
         setKeywords(keywordsSplit);
         setResponse(response); 
         setIsLoading(false)
@@ -38,6 +41,7 @@ const ReaderText = () => {
     const handleUppercaseKeywords = () => {
         const inputSingleWords = inputText.split(" ");
         for (let i = 0; i < inputSingleWords.length; i++) { 
+            // sometimes partial matches get highlighted - eg IN from infrastructure
             if (keywords.find(keyword => inputSingleWords[i].includes(keyword))) {
                 inputSingleWords[i] = inputSingleWords[i].toUpperCase();
             }  
@@ -51,7 +55,7 @@ const ReaderText = () => {
         const inputSingleWords = inputText.split(" ");
         for (let i = 0; i < inputSingleWords.length; i++) { 
             if (keywords.find(keyword => inputSingleWords[i].includes(keyword))) {
-                // needs more logic to handle other punctuation marks
+                // needs more logic to handle not bolding other punctuation marks
                 if (inputSingleWords[i].includes(",")) {
                     const punctSplit = inputSingleWords[i].split(",");
                     punctSplit[0] = "<b>" + punctSplit[0] + "</b>";
