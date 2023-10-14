@@ -22,23 +22,33 @@ const ReaderText = () => {
 
     // have some kind of handling, eg please try again, if GPT response was not as expected
     // sometimes doesn't pick up on the prompt and returns nonsense - need to click generate again
+    // normally happens after longer time waiting for response - consider timing out the request earlier and prompt user to try again 
     // if GPT response contains "I'm sorry" - prompt user to try again
 
     // sometimes still returns keywords separated by numbers - need logic to handle that
-    const handleKeywords = async (event) => {
-        event.preventDefault();
+    async function getKeywords() {
         const keywordsPrompt = "find 10 single-word keywords (nouns or verbs) from the text bellow, return keywords exactly how they were in the text, separated by comma::\n\n" + inputText; 
-        setPrompt(keywordsPrompt)
-        setIsLoading(true)
+        setPrompt(keywordsPrompt);
+        setIsLoading(true);
         const response = await fetchGPTResponse(prompt); 
         const keywordsSplit = response.split(", "); // need logic to split if keywords returned are numbered
         setKeywords(keywordsSplit);
         setResponse(response); 
-        setIsLoading(false)
+        setIsLoading(false);
+    }
+    
+    // adding a getKeywords() function to all keyword handler methods
+    // otherwise, uppercase & bold handlers will work only after keywords have been identified first
+    const handleKeywords = async (event) => {
+        event.preventDefault();
+        getKeywords();    
     } 
 
-    // at the moment, works only after keywords have been identified
-    const handleUppercaseKeywords = () => {
+    const handleUppercaseKeywords = async () => {
+        // reenable after unexpected AI responses are handled for - otherwise keyword search gets impaired
+        // if (!keywords.length) {
+        //     getKeywords();
+        // }
         const inputSingleWords = inputText.split(" ");
         for (let i = 0; i < inputSingleWords.length; i++) { 
             // sometimes partial matches get highlighted - eg IN from infrastructure
@@ -49,9 +59,12 @@ const ReaderText = () => {
         setTextWithKeywords(inputSingleWords.join(" ")); 
     };
 
-    // at the moment, works only after keywords have been identified
     // bolds keyword exactly how input text was split into an array - ie including with punctuation    
-    const handleBoldKeywords = () => {
+    const handleBoldKeywords = async () => {
+        // reenable after unexpected AI responses are handled for - otherwise keyword search gets impaired
+        // if (!keywords.length) {
+        //     getKeywords();
+        // }
         const inputSingleWords = inputText.split(" ");
         for (let i = 0; i < inputSingleWords.length; i++) { 
             if (keywords.find(keyword => inputSingleWords[i].includes(keyword))) {
