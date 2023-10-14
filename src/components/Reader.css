@@ -1,0 +1,96 @@
+.input-output {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+  
+  .input-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  
+  .whole-thing {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+  }
+  
+  #inputTextBox {
+    display: flex;
+    justify-content: center;
+    height: 200px;
+    width: 550px;
+    font-size: 10pt;
+    margin-left: 20px;
+    padding: 15px;
+    resize: none;
+  }
+  
+  .text-format-section {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+  
+  .playback-section {
+    display: flex;
+    justify-content: flex-start;
+    text-align: left;
+    margin-top: 10px;
+  }
+  
+  .bionic-section {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 20px;
+  }
+  
+  #listenButton {
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 100px;
+    height: 30px;
+  }
+  
+  #playbackSpeed {
+    margin-left: 10px;
+  }
+  
+  #pauseButton {
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 70px;
+    height: 30px;
+  }
+  
+  #resumeButton {
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 70px;
+    height: 30px;
+  }
+  
+  #bionicButton {
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 120px;
+    height: 30px;
+  }
+  
+  #fixationPoint {
+    margin-left: 10px;
+  }
+  
+  /* add a scroller for output text */
+  #outputText {
+    margin-top: 8px;
+    margin-left: 40px;
+    margin-right: 30px;
+    height: 225px;
+    width: 50%;
+    line-height: 20pt;
+    text-align: left;
+    overflow-y: scroll;
+  }
