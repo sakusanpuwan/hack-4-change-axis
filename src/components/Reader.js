@@ -63,7 +63,10 @@ const Reader = () => {
             <h1>Reader</h1>
             <div className="input-text">
                 <form className="whole-thing">
-                    <textarea type="text" id="inputTextBox" value={inputText} onChange={(handleChange)}/>
+                    <div className="input-output">
+                        <textarea type="text" id="inputTextBox" value={inputText} onChange={(handleChange)}/>
+                        <p id="outputText">{ReactHtmlParser(outputText)}</p>
+                    </div>
                         <div className="text-format-section">
                             <div className="playback-section">
                                 <p>Set playback speed:</p>
@@ -80,7 +83,6 @@ const Reader = () => {
                         </div> 
                 </form>
             </div>
-            <p id="outputText">{ReactHtmlParser(outputText)}</p>
         </div>
     )
 }
