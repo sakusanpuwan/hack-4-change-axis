@@ -3,7 +3,7 @@ import {textVide} from "text-vide";
 import ReactHtmlParser from 'react-html-parser';
 import './Reader.css';
 
-const Reader = () => {
+const ReaderAudio = () => {
 
     const [inputText, setInputText] = useState([]);
     const [outputText, setOutputText] = useState([]);
@@ -60,7 +60,7 @@ const Reader = () => {
 
     return (
         <div>
-            <h1>Reader</h1>
+            <h1>ReaderAudio</h1>
             <div className="input-text">
                 <form className="whole-thing">
                     <div className="input-output">
@@ -87,7 +87,7 @@ const Reader = () => {
     )
 }
 
-export default Reader;
+export default ReaderAudio;
 
 // TEMPLATE TEXT
 // It is imperative to recognise the significance of acknowledging neurodiversity in the workplace. This entails acknowledging and accommodating individuals with neurological differences, such as autism, ADHD, and dyslexia, among others. By embracing neurodiversity, organisations can foster a more inclusive and diverse work environment, which can lead to increased productivity, creativity, and innovation.
