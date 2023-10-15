@@ -8,7 +8,7 @@ import './ReaderText.css';
 const ReaderText = () => {
 
     const [prompt,setPrompt] = useState("");
-    // const [response,setResponse] = useState();
+    const [response,setResponse] = useState();
     const [isLoading,setIsLoading] = useState()
 
     // const handleClick = async () => {
@@ -34,17 +34,17 @@ const ReaderText = () => {
     // normally happens after longer time waiting for response - consider timing out the request earlier and prompt user to try again 
     // if GPT response contains "I'm sorry" - prompt user to try again
 
-    // sometimes still returns keywords separated by numbers - need logic to handle
+    // sometimes still returns keywords separated by numbers / dashes - need logic to handle
     // 1. firstKeyword 2. secondKeyword
+    // (actual response) keywords: - Build-In - Consistent - Security - Automation - Applications - Migrated 
     // sometimes returns keywords unrelated to text - add check if input text matches all keywords
 
     async function getKeywords() {
         const keywordsPrompt = "find 10 single-word keywords (nouns or verbs) from the text bellow, return keywords exactly how they were in the text, separated by comma::\n\n" + inputText; 
-        setPrompt(keywordsPrompt);
         setIsLoading(true);
-        const response = await fetchGPTResponse(prompt); 
-        const keywordsSplit = response.split(", "); // need logic to split if keywords returned are numbered
-        setKeywords(keywordsSplit);
+        const response = await fetchGPTResponse(keywordsPrompt);     
+        const keywordsSplit = response.split(", "); // need logic to split if keywords returned are numbered / separated differently
+        setKeywords(keywordsSplit); 
         setOutputText(response);
         setIsLoading(false);
     }
