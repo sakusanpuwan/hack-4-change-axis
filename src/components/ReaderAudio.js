@@ -42,9 +42,10 @@ const ReaderAudio = () => {
     // speed changes only to read the whole text from the beginning
     const handleListen = (event) => {
         event.preventDefault();
+        window.speechSynthesis.cancel()
         textToSpeech.rate = playbackSpeed; 
         window.speechSynthesis.speak(textToSpeech);
-    }
+       }
 
     // on pause should probably be able to change speed 
     const handlePause = (event) => {
