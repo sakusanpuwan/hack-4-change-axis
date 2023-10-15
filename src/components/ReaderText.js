@@ -1,3 +1,5 @@
+import '../styling/ReaderText.css'
+
 import { useState } from "react";
 import fetchGPTResponse from "../services/FetchGPTResponse";
 import { PropagateLoader } from "react-spinners";
@@ -12,15 +14,13 @@ const ReaderText = () => {
 
     const handleClick = async () => {
         setIsLoading(true)
-        setPrompt((prevPrompt) => `${prevPrompt} .The text is:${input}`)
-        const response = await fetchGPTResponse(prompt);
+        const updatedPrompt = `The text to manipulate will be enclosed within arrow brackets (<>). Do the following manipulations to the text ${prompt}. The text to manipulate is <${input}>`;
+        console.log(updatedPrompt);
+        setPrompt(updatedPrompt);
+        const response = await fetchGPTResponse(updatedPrompt);
         setResponse(response);
-        setTimeout(async () => {
-            const response = await fetchGPTResponse(prompt);
-            setResponse(response);
-          }, 1000);
         setIsLoading(false);
-        // setPrompt("");
+        setPrompt("");
     } 
 
     const updatePrompt = (formatter) => {
@@ -31,12 +31,15 @@ const ReaderText = () => {
     return (
         <div className="reader-text-container">
             <h1>ReaderText</h1>
-            <form>
-                <textarea rows={6} cols={50} onChange={(event) => setInput(event.target.value)} placeholder="Enter text here..."></textarea>
-                <br></br>
-                <button onClick={() => {handleClick()}} value="submit">Submit</button>    
-            </form>
-            <ReadFormatOptions updatePrompt = {updatePrompt}/>
+            <br></br>
+            <div className='reader-text-input'>
+                <form>
+                    <textarea rows={10} cols={80} onChange={(event) => setInput(event.target.value)} placeholder="Enter text here..."></textarea>
+                    <br></br>
+                    <button onClick={() => {handleClick()}} value="submit">Submit</button>    
+                </form>
+                <ReadFormatOptions updatePrompt = {updatePrompt}/>
+            </div>
             <br></br>
             {isLoading === true ? <PropagateLoader color="white"/> :<p>{response}</p> }
 
