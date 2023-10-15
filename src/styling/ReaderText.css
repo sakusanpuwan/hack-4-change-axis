@@ -1,0 +1,12 @@
+.read-format-options{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.reader-text-input{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
