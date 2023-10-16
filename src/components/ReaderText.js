@@ -7,10 +7,10 @@ import ReadFormatOptions from "./ReadFormatOptions";
 
 const ReaderText = () => {
 
-    const [prompt,setPrompt] = useState("");
-    const [input,setInput] = useState("");
-    const [response,setResponse] = useState();
-    const [isLoading,setIsLoading] = useState()
+    const [prompt,setPrompt] = useState(""); // Prompt to be sent to API
+    const [input,setInput] = useState("");  // User Input
+    const [response,setResponse] = useState();  // Response from API
+    const [isLoading,setIsLoading] = useState() // Are we waiting/loading for a response?
 
     const handleClick = async () => {
         setIsLoading(true)
@@ -23,6 +23,7 @@ const ReaderText = () => {
         setPrompt("");
     } 
 
+    // Chains formats from ReadFormatOptions
     const updatePrompt = (formatter) => {
         setPrompt((prevPrompt) => prevPrompt + ","+ formatter)
     }
