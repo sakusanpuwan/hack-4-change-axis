@@ -10,3 +10,23 @@
     flex-direction: row;
     justify-content: space-around;
 }
+
+.text-format-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.output-text{
+    text-align: center;
+    width: 80%;
+    margin: auto;
+}
+
+.button-section button{
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 150px;
+    height: 30px;
+}

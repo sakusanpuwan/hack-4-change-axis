@@ -130,3 +130,16 @@
     overflow-y: scroll;
 }
 
+
+.reader-audio-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
