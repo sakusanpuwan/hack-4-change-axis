@@ -45,7 +45,7 @@ const ReadFormatOptions = ({updatePrompt}) => {
             <Autocomplete
                 disablePortal
                 id="combo-box-demo"
-                sx={{width:200,backgroundColor: 'white'}}
+                sx={{height:50,width:150,backgroundColor: 'white',borderRadius:5}}
                 options={languages}
                 filterSelectedOptions
                 renderInput={(params) => <TextField {...params} label="Languages" placeholder="Choose language"/>}
@@ -58,7 +58,7 @@ const ReadFormatOptions = ({updatePrompt}) => {
             value={`translate the text into ${language}`}
             onChange={(e) => handleOptionChange(setTranslations,e.target.value)}
             />
-            Translations
+            Translate
             </label>
         </div>
   )
