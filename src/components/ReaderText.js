@@ -13,9 +13,9 @@ const ReaderText = () => {
     const [input,setInput] = useState("");  // User Input
     const [response,setResponse] = useState();  // Response from API
     const [isLoading,setIsLoading] = useState() // Are we waiting/loading for a response?
-
     const [keywords, setKeywords] = useState([]);
     const [fixationPoint, setFixationPoint] = useState(2);
+    const [colour, setColour] = useState("#FAEBD7");
 
     const handleClick = async () => {
         setIsLoading(true)
@@ -126,9 +126,11 @@ const ReaderText = () => {
                     <input type="range" id="fixationPoint" min="1" max="5" value={fixationPoint} onChange={handleFixation}/>
                     <button id="bionicButton" onClick={handleBionic}>Generate Bionic</button>
                 </div>   
+                <input type="color" value={colour} onChange={(e) => {setColour(e.target.value)}}></input>
+                <label>Choose colour</label>
             </div>
             <br></br>
-            {isLoading === true ? <PropagateLoader color="white" id="loader"/> : <p className='output-text'>{ReactHtmlParser(response)}</p>}
+            {isLoading === true ? <PropagateLoader color="white" id="loader"/> : <p className='output-text' style={{color:colour}}>{ReactHtmlParser(response)}</p>}
 
         </div>
     )
