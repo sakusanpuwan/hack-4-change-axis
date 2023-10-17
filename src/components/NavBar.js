@@ -6,8 +6,9 @@ import ReaderText from './ReaderText'
 import ReaderAudio from './ReaderAudio'
 import WriterText from './WriterText'
 import WriterAudio from './WriterAudio'
-import {auth , db } from '../firebase'
+import {auth} from '../firebase'
 import { signOut } from 'firebase/auth'
+import Saved from './Saved'
 
 
 const NavBar = () => {
@@ -24,7 +25,7 @@ const NavBar = () => {
             <h2>AXIS</h2>
             {loginStatus && auth.currentUser !== null ?         
             <div className='profile'> 
-                <img src={auth.currentUser.photoURL} width={'40px'} style= {{borderRadius: "50%"}}></img>
+                <img src={auth.currentUser.photoURL} width={'40px'} style= {{borderRadius: "50%"}} alt='profile-pic'></img>
                 <h3>{auth.currentUser.displayName}</h3>
             </div>
             :
@@ -36,6 +37,7 @@ const NavBar = () => {
                 <li><Link to="/reader-audio">Reader Audio</Link></li>
                 <li><Link to="/writer-text">Writer Text</Link></li>
                 <li><Link to="/writer-audio">Writer Audio</Link></li>
+                {loginStatus && <li><Link to="/saved">Saved</Link></li>}
             </ul>
             {loginStatus && <button onClick={() => {
                 signOut(auth);
@@ -50,6 +52,7 @@ const NavBar = () => {
             <Route path='/reader-audio' element={<ReaderAudio/>}/>
             <Route exact path='/writer-text' element={<WriterText/>}/>
             <Route exact path='/writer-audio' element={<WriterAudio/>}/>
+            <Route exact path='/saved' element={<Saved/>}/>
         </Routes>
     </div>
     )
