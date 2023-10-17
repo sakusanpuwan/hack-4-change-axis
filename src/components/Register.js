@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { createUserWithEmailAndPassword , signInWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword , updateProfile } from "firebase/auth";
 import {auth , db } from '../firebase'
 import { doc, setDoc } from "firebase/firestore"; 
 
@@ -14,15 +14,18 @@ const Register = ({handleLoginStatus}) => {
     const handleRegister = async (event) => {
         event.preventDefault();
         try {
-            const response = await createUserWithEmailAndPassword(auth, email, password);
+            await createUserWithEmailAndPassword(auth, email, password);
             await updateProfile(auth.currentUser, {
                 displayName:name, photoURL:picture
+            })
+            await setDoc(doc(db,"users",auth.currentUser.uid),{
+                name: auth.currentUser.displayName,
+                savedTexts: []
             })
             console.log(auth.currentUser);
             handleLoginStatus();
             // await setDoc(doc(db,"users",response.user.uid))
         } catch (error) {
-            const errorCode = error.code;
             const errorMessage = error.message;
             console.log(errorMessage);
         }

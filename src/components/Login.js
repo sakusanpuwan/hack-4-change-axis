@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { createUserWithEmailAndPassword , signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import {auth} from '../firebase'
 
 const Login = ({handleLoginStatus}) => {
@@ -18,7 +18,6 @@ const Login = ({handleLoginStatus}) => {
         })
         .catch((error) => {
             setError(true)
-            const errorCode = error.code;
             const errorMessage = error.message;
             console.log(errorMessage);
         });
