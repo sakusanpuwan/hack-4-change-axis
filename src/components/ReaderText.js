@@ -5,6 +5,7 @@ import { PropagateLoader } from "react-spinners";
 import ReadFormatOptions from "./ReadFormatOptions";
 import {textVide} from "text-vide";
 import ReactHtmlParser from 'react-html-parser';
+import SaveButton from './SaveButton';
 
 
 const ReaderText = () => {
@@ -130,8 +131,15 @@ const ReaderText = () => {
                 <label>Choose colour</label>
             </div>
             <br></br>
-            {isLoading === true ? <PropagateLoader color="white" id="loader"/> : <p className='output-text' style={{color:colour}}>{ReactHtmlParser(response)}</p>}
-
+            {isLoading === true ? 
+                <PropagateLoader color="white" id="loader"/> 
+            : 
+                <div>
+                    <p className='output-text' style={{color:colour}}>{ReactHtmlParser(response)}</p>
+                    {response && <SaveButton response={response}/>}
+                </div>
+            }
+            
         </div>
     )
 }
