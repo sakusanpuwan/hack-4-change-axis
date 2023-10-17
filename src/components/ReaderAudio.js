@@ -49,7 +49,7 @@ const ReaderAudio = () => {
     const handleListen = (event) => {
         event.preventDefault();
         window.speechSynthesis.cancel();
-        if (isLoading == true) {
+        if (isLoading === true) {
             alert('Please wait')
         } else{
             textToSpeech.rate = playbackSpeed; 
