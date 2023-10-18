@@ -4,18 +4,24 @@ import {auth , db } from '../firebase'
 
 
 const SaveButton = ({response}) => {
-
-    const savedTextsRef = doc(db,"users",auth.currentUser.uid);
+    
 
     const handleAdd = async(event) => {
         event.preventDefault();
-        try {
-            await updateDoc(savedTextsRef , {
-                savedTexts: arrayUnion(response)
-            })
-        } catch (error) {
-            console.log(error);
+        if (auth.currentUser !== null) {
+            try {
+                const savedTextsRef = doc(db,"users",auth.currentUser.uid);
+                await updateDoc(savedTextsRef , {
+                    savedTexts: arrayUnion(response)
+                })
+                console.log(auth.currentUser);
+            } catch (error) {
+                console.log(error);
+            }
+        } else{
+            alert("Sign in");
         }
+
     }
 
     return (
