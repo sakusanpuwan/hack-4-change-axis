@@ -16,7 +16,7 @@ const AudioTranscript = () => {
   };
 
   const splitAndTranscribe = useCallback((file) => {
-    const chunkSize = 25 * 1024 * 1024; // 25MB
+    const chunkSize = 25000000; // 25MB
     const fileSize = file.size;
 
     if (fileSize <= chunkSize) {
@@ -89,10 +89,14 @@ const AudioTranscript = () => {
   return (
     <div className="audio-transcript-container">
       <h1>Audio Transcript</h1>
-      <p>Transcribe audio recordings or use the microphone</p>
+      <p>Transcribe audio recordings</p>
       <input type="file" ref={inputRef} accept="audio/*" onChange={onFileChange} />
+      <div>
+        {response && response.transcription && (
+            <div>{response.transcription}</div>
+        )}
+    </div>
 
-      {response && <div>{response.transcription}</div>}
     </div>
   );
 };
