@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { createUserWithEmailAndPassword , updateProfile } from "firebase/auth";
 import {auth , db } from '../firebase'
 import { doc, setDoc } from "firebase/firestore"; 
+import '../styling/Login.css'
 
 
 const Register = ({handleLoginStatus}) => {
@@ -35,12 +36,12 @@ const Register = ({handleLoginStatus}) => {
     return (
         <div className='Register'>
             <h3>Register</h3>
-            <form onSubmit={handleRegister}>
-                <input type='email' placeholder='email' onChange={(event) => {setEmail(event.target.value)}}></input>
-                <input type='password' placeholder='password' onChange={(event) => {setPassword(event.target.value)}}></input>
-                <input type='name' placeholder='name' onChange={(event) => {setName(event.target.value)}}></input>
-                <input type='picture' placeholder='picture' onChange={(event) => {setPicture(event.target.value)}}></input>
-                <button type='submit'>Register</button>
+            <form onSubmit={handleRegister} className="form">
+                <input type='email' placeholder='email' className="input-field" onChange={(event) => {setEmail(event.target.value)}}></input>
+                <input type='password' placeholder='password' className="input-field" onChange={(event) => {setPassword(event.target.value)}}></input>
+                <input type='name' placeholder='name' className="input-field" onChange={(event) => {setName(event.target.value)}}></input>
+                <input type='picture' placeholder='picture' className="input-field" onChange={(event) => {setPicture(event.target.value)}}></input>
+                <button type='submit' className="login-button">Register</button>
             </form>
         </div>
     )
