@@ -8,12 +8,22 @@ const AudioTranscript = () => {
   const inputRef = useRef();
   const [file, setFile] = useState();
   const [response, setResponse] = useState(null);
+  const [isFileUploaded, setIsFileUploaded] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  
 
   const onFileChange = () => {
-    setFile(inputRef.current.files[0]);
+    const selectedFile = inputRef.current.files[0];
+    if (selectedFile) {
+      setFile(selectedFile);
+      setIsFileUploaded(true);
+    }
   };
 
+
+
   const splitAndTranscribe = useCallback((file) => {
+    setIsLoading(true);
     const chunkSize = 25000000; // 25MB
     const fileSize = file.size;
 
@@ -52,6 +62,9 @@ const AudioTranscript = () => {
         })
         .catch((err) => {
           console.log(err);
+        })
+        .finally(() => {
+            setIsLoading(false); // Set isLoading to false when transcription is complete
         });
     }
   }, []);
@@ -74,7 +87,10 @@ const AudioTranscript = () => {
       })
       .catch((err) => {
         console.log(err);
-      });
+      })
+      .finally(() => {
+        setIsLoading(false); 
+    });
   };
 
   useEffect(() => {
@@ -89,14 +105,22 @@ const AudioTranscript = () => {
       <h1>Audio Transcript</h1>
       <p>Transcribe audio recordings</p>
       <input type="file" ref={inputRef} accept="audio/*" onChange={onFileChange} />
-      <div>
-        {response && response.text && (
-            <div>{JSON.stringify(response.text, null, 2)}</div>
-        )}
-    </div>
-
+      
+      {isFileUploaded && !response ? (
+        <div>
+          <p>File uploaded</p>
+          {isLoading ? (
+            <div className="loading-bar">Transcribing...</div>
+          ) : null}
+        </div>
+      ) : null}
+  
+      {response && response.text && !isLoading && (
+        <div>{JSON.stringify(response.text, null, 2)}</div>
+      )}
     </div>
   );
+ 
 };
 
 export default AudioTranscript;
