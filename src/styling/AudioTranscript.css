@@ -1,0 +1,24 @@
+#outputText {
+    margin-top: 15px;
+    margin-left: 40px;
+    margin-right: 40px;
+    font-size: 14px;
+    height: 225px;
+    width: 50%;
+    line-height: 20pt;
+    text-align: left;
+    overflow-y: scroll;
+}
+
+.audio-transcript-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
