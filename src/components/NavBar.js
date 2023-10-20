@@ -23,14 +23,18 @@ const NavBar = () => {
     return (
         <div>
             <nav className='sidebar'>
-            <h2 style= {{borderBottom:"3px solid #444654",width:"60%",display:"inline-block"}}>AXIS</h2>
+            <h2 style= {{borderBottom:"3px solid #444654"}}>AXIS</h2>
             {loginStatus && auth.currentUser !== null ?         
             <div className='profile'> 
                 <img src={auth.currentUser.photoURL} width={'40px'} style= {{borderRadius: "50%"}} alt='profile-pic'></img>
                 <h3>{auth.currentUser.displayName}</h3>
             </div>
             :
-            <h4>Hey</h4>
+            <Link to="/">
+            <button type="button">
+                 Sign In
+            </button>
+            </Link>
             }
             <ul className='navbar'>
                 <li><Link to="/">Home</Link></li>
