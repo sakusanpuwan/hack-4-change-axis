@@ -1,0 +1,45 @@
+.loading-bar {
+    width: 100%;
+    height: 10px;
+    background: #f0f0f0;
+    position: relative;
+  }
+  
+  .loading-bar::after {
+    content: '';
+    width: 0;
+    height: 100%;
+    background: #0074cc;
+    position: absolute;
+    animation: loading 5s linear forwards;
+  }
+  
+  @keyframes loading {
+    to {
+      width: 100%;
+    }
+  }
+#outputText {
+    margin-top: 15px;
+    margin-left: 40px;
+    margin-right: 40px;
+    font-size: 14px;
+    height: 225px;
+    width: 50%;
+    line-height: 20pt;
+    text-align: left;
+    overflow-y: scroll;
+}
+
+.audio-transcript-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
