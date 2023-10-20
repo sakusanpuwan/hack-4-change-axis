@@ -2,7 +2,7 @@ https://sakusanpuwan.github.io/hack-4-change-axis/
 
 git clone https://github.com/sakusanpuwan/hack-4-change-axis.git
 
-npm install - install node modules
+npm install - install node modules | if errors -> try npm install --force
 
 create file named ".env" in HACK-4-CHANGE-AXIS folder
 
