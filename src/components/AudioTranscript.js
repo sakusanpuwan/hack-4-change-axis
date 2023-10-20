@@ -1,5 +1,3 @@
-
-
 import React, { useRef, useEffect, useState, useCallback } from "react";
 import axios from "axios";
 
@@ -92,8 +90,8 @@ const AudioTranscript = () => {
       <p>Transcribe audio recordings</p>
       <input type="file" ref={inputRef} accept="audio/*" onChange={onFileChange} />
       <div>
-        {response && response.transcription && (
-            <div>{response.transcription}</div>
+        {response && response.text && (
+            <div>{JSON.stringify(response.text, null, 2)}</div>
         )}
     </div>
 
