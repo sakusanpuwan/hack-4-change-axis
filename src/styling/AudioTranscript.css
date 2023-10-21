@@ -1,24 +1,32 @@
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .loading-bar {
-    width: 100%;
-    height: 10px;
-    background: #f0f0f0;
-    position: relative;
+  width: 50px; /* Set the desired width for the loading bar */
+  height: 50px; /* Set the desired height for the loading bar */
+  animation: spin 2s linear infinite; /* Apply a rotation animation */
+  border: 6px solid transparent; /* Create a circular border */
+  border-top: 6px solid #1890ff; /* Initial color (blue) */
+  border-radius: 50%; /* Make it a circle */
+  position: relative; /* Relative positioning for the dot */
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
   }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+
   
-  .loading-bar::after {
-    content: '';
-    width: 0;
-    height: 100%;
-    background: #0074cc;
-    position: absolute;
-    animation: loading 5s linear forwards;
-  }
-  
-  @keyframes loading {
-    to {
-      width: 100%;
-    }
-  }
+
 #outputText {
     margin-top: 15px;
     margin-left: 40px;
@@ -31,6 +39,20 @@
     overflow-y: scroll;
 }
 
+input[type=file]::file-selector-button {
+  margin-right: 20px;
+  border: none;
+  background: #084cdf;
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  transition: background .2s ease-in-out;
+}
+
+input[type=file]::file-selector-button:hover {
+  background: #0d45a5;
+}
 .audio-transcript-container{
     display: flex;
     flex-direction: column;
@@ -38,8 +60,8 @@
     align-content: center;
 }
 
-form{
+.form-container{
     display: flex;
-    flex-direction: column;
     align-items: center;
+    justify-content: center;
 }

@@ -1,5 +1,8 @@
+import "../styling/AudioTranscript.css"
 import React, { useRef, useEffect, useState, useCallback } from "react";
 import axios from "axios";
+import { Circle } from 'rc-progress';
+
 
 const REACT_APP_KEY = process.env.REACT_APP_KEY;
 const model = "whisper-1";
@@ -10,6 +13,8 @@ const AudioTranscript = () => {
   const [response, setResponse] = useState(null);
   const [isFileUploaded, setIsFileUploaded] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [loadingProgress, setLoadingProgress] = useState(0);
+
   
 
   const onFileChange = () => {
@@ -65,6 +70,7 @@ const AudioTranscript = () => {
         })
         .finally(() => {
             setIsLoading(false); // Set isLoading to false when transcription is complete
+            setLoadingProgress(100);
         });
     }
   }, []);
@@ -90,6 +96,7 @@ const AudioTranscript = () => {
       })
       .finally(() => {
         setIsLoading(false); 
+        setLoadingProgress(100);
     });
   };
 
@@ -99,18 +106,27 @@ const AudioTranscript = () => {
     }
     splitAndTranscribe(file);
   }, [file, splitAndTranscribe]);
-
   return (
     <div className="audio-transcript-container">
-      <h1>Audio Transcript</h1>
+      <h1>AudioTranscript</h1>
       <p>Transcribe audio recordings</p>
-      <input type="file" ref={inputRef} accept="audio/*" onChange={onFileChange} />
-      
+      <div className="form-container">
+        <input type="file" ref={inputRef} accept="audio/*" onChange={onFileChange} />
+      </div>
       {isFileUploaded && !response ? (
         <div>
           <p>File uploaded</p>
           {isLoading ? (
-            <div className="loading-bar">Transcribing...</div>
+            <div className="loading-container">
+              <p>Transcribing...</p>
+              <div className="loading-bar">
+                <Circle
+                  percent={loadingProgress}
+                  strokeWidth={6} // Adjust the stroke width
+                  strokeColor="#1890ff"
+                />
+              </div>
+            </div>
           ) : null}
         </div>
       ) : null}
@@ -120,7 +136,8 @@ const AudioTranscript = () => {
       )}
     </div>
   );
- 
+  
 };
+
 
 export default AudioTranscript;
