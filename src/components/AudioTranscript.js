@@ -14,6 +14,9 @@ const AudioTranscript = () => {
   const [isFileUploaded, setIsFileUploaded] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [loadingProgress, setLoadingProgress] = useState(0);
+  const [transcribedText, setTranscribedText] = useState('');
+  const [copiedMessage, setCopiedMessage] = useState("");
+
 
   
 
@@ -24,8 +27,6 @@ const AudioTranscript = () => {
       setIsFileUploaded(true);
     }
   };
-
-
 
   const splitAndTranscribe = useCallback((file) => {
     setIsLoading(true);
@@ -106,6 +107,31 @@ const AudioTranscript = () => {
     }
     splitAndTranscribe(file);
   }, [file, splitAndTranscribe]);
+
+  useEffect(() => {
+    if (response && response.text) {
+      setTranscribedText(response.text);
+    }
+  }, [response]);
+
+  const handleCopyToClipboard = () => {
+    const textArea = document.createElement("textarea");
+    textArea.value = transcribedText;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand("copy");
+    document.body.removeChild(textArea);
+   
+    setCopiedMessage("Copied!");
+  
+    setTimeout(() => {
+      setCopiedMessage("");
+    }, 3000); 
+  };
+  
+
+
+
   return (
     <div className="audio-transcript-container">
       <h1>AudioTranscript</h1>
@@ -122,7 +148,7 @@ const AudioTranscript = () => {
               <div className="loading-bar">
                 <Circle
                   percent={loadingProgress}
-                  strokeWidth={6} // Adjust the stroke width
+                  strokeWidth={6}
                   strokeColor="#1890ff"
                 />
               </div>
@@ -130,9 +156,13 @@ const AudioTranscript = () => {
           ) : null}
         </div>
       ) : null}
-  
-      {response && response.text && !isLoading && (
-        <div>{JSON.stringify(response.text, null, 2)}</div>
+      {transcribedText && !isLoading && (
+        <div className="transcription-box">
+          <h3>Transcribed Text:</h3>
+        <div className="transcription-text">{transcribedText}</div>
+        {copiedMessage && <p className="copied-message">{copiedMessage}</p>}
+        <button className="copied-button" onClick={handleCopyToClipboard}>Copy to Clipboard</button>
+      </div>
       )}
     </div>
   );
