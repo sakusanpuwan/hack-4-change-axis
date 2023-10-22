@@ -5,6 +5,7 @@ import SaveButton from "./SaveButton";
 import ReactHtmlParser from 'react-html-parser';
 import '../styling/WriterText.css'
 import CopyButton from "./CopyButton";
+import ReadingRuler from "./ReadingRuler";
 
 
 const WriterText = () => {
@@ -42,6 +43,7 @@ const WriterText = () => {
                     <p className='output-text' >{ReactHtmlParser(response)}</p>
                     {response && <SaveButton response={response}/>}
                     {response && <CopyButton text={response}/>}
+                    {response && <ReadingRuler/>}
                 </div>
             }
         </div>

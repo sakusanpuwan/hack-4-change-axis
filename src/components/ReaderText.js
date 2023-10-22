@@ -9,6 +9,7 @@ import ReactHtmlParser from 'react-html-parser';
 import SaveButton from './SaveButton';
 import Draggable from 'react-draggable';
 import CopyButton from './CopyButton';
+import ReadingRuler from './ReadingRuler';
 
 
 const ReaderText = () => {
@@ -138,17 +139,16 @@ const ReaderText = () => {
                 <PropagateLoader color="white" id="loader"/> 
             : 
                 <div>
-                    <p className='output-text' style={{color:colour}}>{ReactHtmlParser(response)}</p>
-                    {response && <SaveButton response={response}/>}
-                    {response && <CopyButton text={response}/>}
+                    {response && (
+                        <div>
+                        <p className='output-text' style={{color:colour}}>{ReactHtmlParser(response)}</p>
+                        <SaveButton response={response}/>
+                        <ReadingRuler/>
+                        </div>
+                    )}
                 </div>
             }
-            <br></br>
-            <Draggable>
-                <div className='reading-ruler'>
-                </div>
-            </Draggable>
-            
+
         </div>
     )
 }

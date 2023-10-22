@@ -1,6 +1,9 @@
 import React from 'react';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import CopyButton from './CopyButton';
+import '../styling/ReaderText.css'
+import ReadingRuler from './ReadingRuler';
+
 
 const WriterAudio = () => {
 
@@ -22,9 +25,13 @@ const WriterAudio = () => {
         <button onClick={() => {SpeechRecognition.startListening({continuous:true})}}>Start</button>
         <button onClick={SpeechRecognition.stopListening}>Stop</button>
         <button onClick={resetTranscript}>Reset</button>
-        <p>{transcript}</p>
+        <div className='output-text'>
+            <p>{transcript}</p>
+        </div>
+
         <br></br>
         {transcript && <CopyButton text={transcript}/>}
+        {transcript && <ReadingRuler/>}
     </div>
     );
 }

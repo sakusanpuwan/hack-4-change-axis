@@ -3,6 +3,7 @@ import React, { useRef, useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import { Circle } from 'rc-progress';
 import CopyButton from "./CopyButton";
+import ReadingRuler from "./ReadingRuler";
 
 
 const REACT_APP_KEY = process.env.REACT_APP_KEY;
@@ -16,10 +17,6 @@ const AudioTranscript = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [loadingProgress, setLoadingProgress] = useState(0);
   const [transcribedText, setTranscribedText] = useState('');
-  const [copiedMessage, setCopiedMessage] = useState("");
-
-
-  
 
   const onFileChange = () => {
     const selectedFile = inputRef.current.files[0];
@@ -115,24 +112,6 @@ const AudioTranscript = () => {
     }
   }, [response]);
 
-  const handleCopyToClipboard = () => {
-    const textArea = document.createElement("textarea");
-    textArea.value = transcribedText;
-    document.body.appendChild(textArea);
-    textArea.select();
-    document.execCommand("copy");
-    document.body.removeChild(textArea);
-   
-    setCopiedMessage("Copied!");
-  
-    setTimeout(() => {
-      setCopiedMessage("");
-    }, 3000); 
-  };
-  
-
-
-
   return (
     <div className="audio-transcript-container">
       <h1>AudioTranscript</h1>
@@ -162,6 +141,7 @@ const AudioTranscript = () => {
           <h3>Transcribed Text:</h3>
         <div className="transcription-text">{transcribedText}</div>
         <CopyButton text={transcribedText}/>
+        <ReadingRuler/>
       </div>
       )}
     </div>
