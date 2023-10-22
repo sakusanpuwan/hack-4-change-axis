@@ -1,4 +1,5 @@
 import '../styling/ReaderText.css'
+import '../styling/ReadingRuler.css'
 import { useState } from "react";
 import fetchGPTResponse from "../services/FetchGPTResponse";
 import { PropagateLoader } from "react-spinners";
@@ -6,6 +7,7 @@ import ReadFormatOptions from "./ReadFormatOptions";
 import {textVide} from "text-vide";
 import ReactHtmlParser from 'react-html-parser';
 import SaveButton from './SaveButton';
+import Draggable from 'react-draggable';
 
 
 const ReaderText = () => {
@@ -139,6 +141,11 @@ const ReaderText = () => {
                     {response && <SaveButton response={response}/>}
                 </div>
             }
+            <br></br>
+            <Draggable>
+                <div className='reading-ruler'>
+                </div>
+            </Draggable>
             
         </div>
     )
