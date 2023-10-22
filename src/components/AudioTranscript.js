@@ -1,5 +1,8 @@
+import "../styling/AudioTranscript.css"
 import React, { useRef, useEffect, useState, useCallback } from "react";
 import axios from "axios";
+import { Circle } from 'rc-progress';
+
 
 const REACT_APP_KEY = process.env.REACT_APP_KEY;
 const model = "whisper-1";
@@ -10,6 +13,11 @@ const AudioTranscript = () => {
   const [response, setResponse] = useState(null);
   const [isFileUploaded, setIsFileUploaded] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [loadingProgress, setLoadingProgress] = useState(0);
+  const [transcribedText, setTranscribedText] = useState('');
+  const [copiedMessage, setCopiedMessage] = useState("");
+
+
   
 
   const onFileChange = () => {
@@ -19,8 +27,6 @@ const AudioTranscript = () => {
       setIsFileUploaded(true);
     }
   };
-
-
 
   const splitAndTranscribe = useCallback((file) => {
     setIsLoading(true);
@@ -65,6 +71,7 @@ const AudioTranscript = () => {
         })
         .finally(() => {
             setIsLoading(false); // Set isLoading to false when transcription is complete
+            setLoadingProgress(100);
         });
     }
   }, []);
@@ -90,6 +97,7 @@ const AudioTranscript = () => {
       })
       .finally(() => {
         setIsLoading(false); 
+        setLoadingProgress(100);
     });
   };
 
@@ -100,27 +108,66 @@ const AudioTranscript = () => {
     splitAndTranscribe(file);
   }, [file, splitAndTranscribe]);
 
+  useEffect(() => {
+    if (response && response.text) {
+      setTranscribedText(response.text);
+    }
+  }, [response]);
+
+  const handleCopyToClipboard = () => {
+    const textArea = document.createElement("textarea");
+    textArea.value = transcribedText;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand("copy");
+    document.body.removeChild(textArea);
+   
+    setCopiedMessage("Copied!");
+  
+    setTimeout(() => {
+      setCopiedMessage("");
+    }, 3000); 
+  };
+  
+
+
+
   return (
     <div className="audio-transcript-container">
-      <h1>Audio Transcript</h1>
+      <h1>AudioTranscript</h1>
       <p>Transcribe audio recordings</p>
-      <input type="file" ref={inputRef} accept="audio/*" onChange={onFileChange} />
-      
+      <div className="form-container">
+        <input type="file" ref={inputRef} accept="audio/*" onChange={onFileChange} />
+      </div>
       {isFileUploaded && !response ? (
         <div>
           <p>File uploaded</p>
           {isLoading ? (
-            <div className="loading-bar">Transcribing...</div>
+            <div className="loading-container">
+              <p>Transcribing...</p>
+              <div className="loading-bar">
+                <Circle
+                  percent={loadingProgress}
+                  strokeWidth={6}
+                  strokeColor="#1890ff"
+                />
+              </div>
+            </div>
           ) : null}
         </div>
       ) : null}
-  
-      {response && response.text && !isLoading && (
-        <div>{JSON.stringify(response.text, null, 2)}</div>
+      {transcribedText && !isLoading && (
+        <div className="transcription-box">
+          <h3>Transcribed Text:</h3>
+        <div className="transcription-text">{transcribedText}</div>
+        {copiedMessage && <p className="copied-message">{copiedMessage}</p>}
+        <button className="copied-button" onClick={handleCopyToClipboard}>Copy to Clipboard</button>
+      </div>
       )}
     </div>
   );
- 
+  
 };
+
 
 export default AudioTranscript;

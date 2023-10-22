@@ -1,45 +1,86 @@
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .loading-bar {
-    width: 100%;
-    height: 10px;
-    background: #f0f0f0;
-    position: relative;
-  }
-  
-  .loading-bar::after {
-    content: '';
-    width: 0;
-    height: 100%;
-    background: #0074cc;
-    position: absolute;
-    animation: loading 5s linear forwards;
-  }
-  
-  @keyframes loading {
-    to {
-      width: 100%;
-    }
-  }
-#outputText {
-    margin-top: 15px;
-    margin-left: 40px;
-    margin-right: 40px;
-    font-size: 14px;
-    height: 225px;
-    width: 50%;
-    line-height: 20pt;
-    text-align: left;
-    overflow-y: scroll;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+  border: 6px solid transparent;
+  border-top: 6px solid #1890ff;
+  border-radius: 50%;
+  position: relative;
 }
 
-.audio-transcript-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
-form{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.transcription-box {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin: 10px 0; /* Adjust the margin here */
+  border-radius: 5px;
+  text-align: left;
+  max-width: 80%;
+}
+
+.transcription-text {
+  font-size: 14px;
+  height: 100%;
+  width: 100%;
+  line-height: 20pt;
+  text-align: left;
+  overflow-y: scroll;
+}
+
+h3 {
+  margin: 0; 
+  padding: 0; 
+}
+
+.copied-button{
+  margin-top: 10px; 
+}
+
+.copied-message {
+  color: green;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+
+input[type="file"]::file-selector-button {
+  margin-right: 20px;
+  border: none;
+  background: #084cdf;
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+input[type="file"]::file-selector-button:hover {
+  background: #0d45a5;
+}
+
+.audio-transcript-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
