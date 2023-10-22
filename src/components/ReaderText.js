@@ -21,21 +21,39 @@ const ReaderText = () => {
     const [keywords, setKeywords] = useState([]);
     const [fixationPoint, setFixationPoint] = useState(2);
     const [colour, setColour] = useState("#FAEBD7");
+    const [language, setLanguage] = useState("");
 
-    const handleClick = async () => {
+    const handleSyllableSpacing = async (event) => {
+        event.preventDefault();
         setIsLoading(true)
-        const updatedPrompt = `The text to manipulate will be enclosed within arrow brackets (<>). Do the following manipulations to the text ${prompt}. The text to manipulate is <${input}>`;
-        console.log(updatedPrompt);
-        setPrompt(updatedPrompt);
+        const updatedPrompt = `add hyphens between each syllables in each word in the following text:${input}`;
+        setPrompt(prompt);
         const response = await fetchGPTResponse(updatedPrompt);
         setResponse(response);
         setIsLoading(false);
         setPrompt("");
-    } 
+    }
 
-    // Chains formats from ReadFormatOptions
-    const updatePrompt = (formatter) => {
-        setPrompt((prevPrompt) => prevPrompt + ","+ formatter)
+    const handleSummarise = async (event) => {
+        event.preventDefault();
+        setIsLoading(true)
+        const updatedPrompt = `summarise as simply as possible the following text:${input}`;
+        setPrompt(prompt);
+        const response = await fetchGPTResponse(updatedPrompt);
+        setResponse(response);
+        setIsLoading(false);
+        setPrompt("");
+    }
+
+    const handleTranslate = async (event) => {
+        event.preventDefault();
+        setIsLoading(true)
+        const updatedPrompt = `translate into ${language} the following text:${input}`;
+        setPrompt(prompt);
+        const response = await fetchGPTResponse(updatedPrompt);
+        setResponse(response);
+        setIsLoading(false);
+        setPrompt("");
     }
 
     async function getKeywords() {
@@ -115,16 +133,24 @@ const ReaderText = () => {
                     <textarea rows={10} cols={80} onChange={(event) => setInput(event.target.value)} placeholder="Enter text here..."></textarea>
                     <br></br>
                 </form>
-                <div>
-                    <ReadFormatOptions updatePrompt = {updatePrompt}/>
-                </div>
             </div>
             <div className="text-format-section">
                 <div className="button-section">
                     <button onClick={handleKeywords} value="submit">Generate Keywords</button>  
                     <button onClick={handleUppercaseKeywords} value="submit">Uppercase Keywords</button>  
                     <button onClick={handleBoldKeywords} value="submit">Bold Keywords</button> 
-                    <button onClick={handleClick} value="submit">Submit</button>
+                    <button onClick={handleSyllableSpacing} value="submit">Space Syllables</button>
+                    <button onClick={handleSummarise} value="submit">Summarise</button>
+                    <div>
+                        <select onChange={(e) => {setLanguage(e.target.value)}}>
+                            <option value="English">Select a Language</option>
+                            <option value="German">German</option>
+                            <option value="Spanish">Spanish</option>
+                            <option value="French">French</option>
+                        </select>
+                        <button onClick={handleTranslate} value="submit">Translate</button>
+                    </div>
+
                 </div> 
                 <div className="bionic-section">
                     <p>Change Bionic fixation point:</p>
@@ -135,19 +161,23 @@ const ReaderText = () => {
                 <label>Choose colour</label>
             </div>
             <br></br>
-            {isLoading === true ? 
-                <PropagateLoader color="white" id="loader"/> 
-            : 
-                <div>
-                    {response && (
-                        <div>
-                        <p className='output-text' style={{color:colour}}>{ReactHtmlParser(response)}</p>
-                        <SaveButton response={response}/>
-                        <ReadingRuler/>
-                        </div>
-                    )}
-                </div>
-            }
+            <div className='output'>
+                {isLoading === true ? 
+                    <PropagateLoader color="white" id="loader"/> 
+                : 
+                    <div>
+                        {response && (
+                            <div>
+                            <p className='output-text' style={{color:colour}}>{ReactHtmlParser(response)}</p>
+                            <SaveButton response={response}/>
+                            <CopyButton text={response}/>
+                            <ReadingRuler/>
+                            </div>
+                        )}
+                    </div>
+                }
+            </div>
+
 
         </div>
     )

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { doc, onSnapshot , getDoc } from "firebase/firestore";
 import {auth , db } from '../firebase'
 import ReactHtmlParser from 'react-html-parser';
+import '../styling/ReaderText.css'
+
 
 const Saved = () => {
 
@@ -19,7 +21,7 @@ const Saved = () => {
     const displaySavedTexts = savedTexts.map((text, index) => (<p key={index} style={{ color: 'white' }}>{ReactHtmlParser(text)}</p>))
 
     return (
-        <div>
+        <div className='output-text'>
            <h1>Saved</h1>
            {savedTexts && displaySavedTexts}
         </div>

@@ -1,16 +1,9 @@
-.read-format-options{
+.reader-text-container{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
+    justify-content: center;
+    align-content: center;
 }
-
-.reader-text-input{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
-
 .text-format-section{
     display: flex;
     flex-direction: column;
@@ -19,6 +12,7 @@
 }
 
 .output-text{
+    font-family: Arial, Helvetica, sans-serif;
     text-align: center;
     width: 80%;
     margin: auto;
@@ -26,9 +20,23 @@
     text-justify: inter-word;
 }
 
+.button-section{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
 .button-section button{
     margin-top: 10px;
     margin-left: 10px;
     width: 150px;
     height: 30px;
+}
+
+.output{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
