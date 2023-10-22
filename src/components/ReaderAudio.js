@@ -27,7 +27,7 @@ const ReaderAudio = () => {
 
     const handleChange = async (language,languageCode) => {
         setIsLoading(true);
-        const request = `Translate the following following text into ${language}. Text to translate is ${inputText}`;
+        const request = `Translate into ${language} the follwing text: ${inputText}`;
         const response = await fetchGPTResponse(request);
         setInputText(response);
         setLanguage(language);
@@ -50,7 +50,7 @@ const ReaderAudio = () => {
         event.preventDefault();
         window.speechSynthesis.cancel();
         if (isLoading === true) {
-            alert('Please wait')
+            alert('Please wait and try again')
         } else{
             textToSpeech.rate = playbackSpeed; 
             textToSpeech.lang = languageCode;
