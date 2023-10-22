@@ -23,7 +23,7 @@ const NavBar = () => {
     return (
         <div>
             <nav className='sidebar'>
-            <h2 style= {{borderBottom:"3px solid #444654"}}>AXIS</h2>
+            <h2>AXIS</h2>
             {loginStatus && auth.currentUser !== null ?         
             <div className='profile'> 
                 <img src={auth.currentUser.photoURL} width={'40px'} style= {{borderRadius: "50%"}} alt='profile-pic'></img>

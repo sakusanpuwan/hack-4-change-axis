@@ -85,7 +85,6 @@ const ReaderAudio = () => {
                     <button id="pauseButton" onClick={handlePause}>Pause</button>
                     <button id="resumeButton" onClick={handleResume}>Resume</button>
                     <Autocomplete
-                    disablePortal
                     id="combo-box-demo"
                     sx={{height:50,width:150,backgroundColor: 'white',borderRadius:5}}
                     options={languages}
