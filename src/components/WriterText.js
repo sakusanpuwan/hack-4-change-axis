@@ -4,6 +4,7 @@ import { PropagateLoader } from "react-spinners";
 import SaveButton from "./SaveButton";
 import ReactHtmlParser from 'react-html-parser';
 import '../styling/WriterText.css'
+import CopyButton from "./CopyButton";
 
 
 const WriterText = () => {
@@ -40,6 +41,7 @@ const WriterText = () => {
                 <div>
                     <p className='output-text' >{ReactHtmlParser(response)}</p>
                     {response && <SaveButton response={response}/>}
+                    {response && <CopyButton text={response}/>}
                 </div>
             }
         </div>

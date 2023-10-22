@@ -2,6 +2,7 @@ import "../styling/AudioTranscript.css"
 import React, { useRef, useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import { Circle } from 'rc-progress';
+import CopyButton from "./CopyButton";
 
 
 const REACT_APP_KEY = process.env.REACT_APP_KEY;
@@ -160,8 +161,7 @@ const AudioTranscript = () => {
         <div className="transcription-box">
           <h3>Transcribed Text:</h3>
         <div className="transcription-text">{transcribedText}</div>
-        {copiedMessage && <p className="copied-message">{copiedMessage}</p>}
-        <button className="copied-button" onClick={handleCopyToClipboard}>Copy to Clipboard</button>
+        <CopyButton text={transcribedText}/>
       </div>
       )}
     </div>

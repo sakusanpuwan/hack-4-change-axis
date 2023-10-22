@@ -8,6 +8,7 @@ import {textVide} from "text-vide";
 import ReactHtmlParser from 'react-html-parser';
 import SaveButton from './SaveButton';
 import Draggable from 'react-draggable';
+import CopyButton from './CopyButton';
 
 
 const ReaderText = () => {
@@ -139,6 +140,7 @@ const ReaderText = () => {
                 <div>
                     <p className='output-text' style={{color:colour}}>{ReactHtmlParser(response)}</p>
                     {response && <SaveButton response={response}/>}
+                    {response && <CopyButton text={response}/>}
                 </div>
             }
             <br></br>
