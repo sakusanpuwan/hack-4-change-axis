@@ -30,6 +30,7 @@ jobs:
 
       - name: Deploy to GitHub Pages
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REACT_APP_API_KEY: ${{ secrets.REACT_APP_API_KEY }}
           REACT_APP_FIREBASE_KEY: ${{ secrets.REACT_APP_FIREBASE_KEY }}
         run: |
