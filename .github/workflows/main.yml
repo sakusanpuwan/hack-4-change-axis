@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Set Git User Name and Email
         run: |
-          git config --global user.name "sakusanpuwan"
+          git config --global user.name "https://github.com/sakusanpuwan"
           git config --global user.email "sakusanpuwan98@gmail.com"
     
       - name: Checkout code
