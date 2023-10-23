@@ -9,6 +9,7 @@ import WriterAudio from './WriterAudio'
 import {auth} from '../firebase'
 import { signOut } from 'firebase/auth'
 import Saved from './Saved'
+import Export from './Export';
 
 
 const NavBar = () => {
@@ -53,6 +54,8 @@ const NavBar = () => {
             <Route exact path='/writer-text' element={<WriterText/>}/>
             <Route exact path='/writer-audio' element={<WriterAudio/>}/>
             <Route exact path='/saved' element={<Saved/>}/>
+            <Route exact path='/export' element={<Export/>}/>
+
         </Routes>
     </div>
     )
