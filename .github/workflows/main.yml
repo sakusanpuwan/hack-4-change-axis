@@ -33,6 +33,6 @@ jobs:
           REACT_APP_API_KEY: ${{ secrets.REACT_APP_API_KEY }}
           REACT_APP_FIREBASE_KEY: ${{ secrets.REACT_APP_FIREBASE_KEY }}
         run: |
-          git remote set-url origin https://git:${GH_TOKEN}@github.com/sakusanpuwan/hack-4-axis.git
+          git remote set-url origin https://git:${ secrets.GH_TOKEN }@github.com/sakusanpuwan/hack-4-axis.git
           npm install -g gh-pages
           gh-pages -d build
