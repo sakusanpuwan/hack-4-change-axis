@@ -3,11 +3,9 @@ import '../styling/ReadingRuler.css'
 import { useState } from "react";
 import fetchGPTResponse from "../services/FetchGPTResponse";
 import { PropagateLoader } from "react-spinners";
-import ReadFormatOptions from "./ReadFormatOptions";
 import {textVide} from "text-vide";
 import ReactHtmlParser from 'react-html-parser';
 import SaveButton from './SaveButton';
-import Draggable from 'react-draggable';
 import CopyButton from './CopyButton';
 import ReadingRuler from './ReadingRuler';
 

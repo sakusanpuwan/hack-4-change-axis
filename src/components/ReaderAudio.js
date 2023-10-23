@@ -1,6 +1,5 @@
 import { useState } from "react";
 import fetchGPTResponse from "../services/FetchGPTResponse";
-import { PropagateLoader } from "react-spinners";
 import '../styling/ReaderAudio.css';
 import { Autocomplete, TextField } from "@mui/material";
 
@@ -15,7 +14,6 @@ const ReaderAudio = () => {
     const textToSpeech = new SpeechSynthesisUtterance(inputText);
     const [playbackSpeed, setPlaybackSpeed] = useState(1);
 
-    const [language, setLanguage] = useState("");
     const [languageCode, setLanguageCode] = useState("");
 
     const languages = [
@@ -30,7 +28,6 @@ const ReaderAudio = () => {
         const request = `Translate into ${language} the follwing text: ${inputText}`;
         const response = await fetchGPTResponse(request);
         setInputText(response);
-        setLanguage(language);
         setLanguageCode(languageCode)
         setIsLoading(false);
     }

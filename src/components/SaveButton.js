@@ -1,5 +1,5 @@
 import React from 'react'
-import { doc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
+import { doc, updateDoc, arrayUnion } from "firebase/firestore";
 import {auth , db } from '../firebase'
 
 

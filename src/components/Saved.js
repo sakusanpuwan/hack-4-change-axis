@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { doc, onSnapshot , getDoc } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 import {auth , db } from '../firebase'
 import ReactHtmlParser from 'react-html-parser';
 import '../styling/ReaderText.css'
