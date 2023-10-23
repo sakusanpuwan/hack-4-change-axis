@@ -30,6 +30,9 @@ jobs:
           echo "REACT_APP_FIREBASE_KEY=${{ secrets.REACT_APP_FIREBASE_KEY }}" >> .env.production
           echo "REACT_APP_KEY=${{ secrets.REACT_APP_KEY }}" >> .env.production
 
+      - name: Debug Environment Variables
+        run: cat .env.production
+
       - name: Build
         run: |
           cp .env.production .env
