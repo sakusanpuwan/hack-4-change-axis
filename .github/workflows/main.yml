@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-latest
 
     env:  # Define environment variables
-      REACT_APP_API_KEY: ${{ secrets.REACT_APP_API_KEY }}
       REACT_APP_FIREBASE_KEY: ${{ secrets.REACT_APP_FIREBASE_KEY }}
+      REACT_APP_KEY: ${{ secrets.REACT_APP_KEY }}
 
     steps:
       - name: Set up Node.js
@@ -25,8 +25,15 @@ jobs:
       - name: Install dependencies
         run: npm install --force
 
+      - name: Pass Environment Variables During Build
+        run: |
+          echo "REACT_APP_FIREBASE_KEY=${{ secrets.REACT_APP_FIREBASE_KEY }}" >> .env.production
+          echo "REACT_APP_KEY=${{ secrets.REACT_APP_KEY }}" >> .env.production
+
       - name: Build
-        run: npm run build
+        run: |
+          cp .env.production .env
+          npm run build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
