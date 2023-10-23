@@ -3,7 +3,7 @@ name: Build and Deploy
 on:
   push:
     branches:
-      - main
+      - deploy
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -13,7 +13,6 @@ jobs:
         run: |
           git config --global user.name "sakusanpuwan"
           git config --global user.email "sakusanpuwan98@gmail.com"
-          git remote set-url https://sakusanpuwan:${{ secrets.MY_PASSWORD }}@github.com/sakusanpuwan/hack-4-change-axis.git
       - name: Checkout code
         uses: actions/checkout@v2
 
@@ -34,5 +33,6 @@ jobs:
           REACT_APP_API_KEY: ${{ secrets.REACT_APP_API_KEY }}
           REACT_APP_FIREBASE_KEY: ${{ secrets.REACT_APP_FIREBASE_KEY }}
         run: |
+          git remote set-url origin https://git:${GH_TOKEN}@github.com/sakusanpuwan/hack-4-axis.git
           npm install -g gh-pages
           gh-pages -d build
