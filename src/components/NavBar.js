@@ -10,7 +10,6 @@ import AudioTranscript from './AudioTranscript'
 import {auth} from '../firebase'
 import { signOut } from 'firebase/auth'
 import Saved from './Saved'
-import Export from './Export';
 
 
 const NavBar = () => {
@@ -61,7 +60,6 @@ const NavBar = () => {
             <Route path='/reader-text' element={<ReaderText/>}/>
             <Route path='/reader-audio' element={<ReaderAudio/>}/>
             <Route exact path='/saved' element={<Saved/>}/>
-            <Route exact path='/export' element={<Export/>}/>
 
         </Routes>
     </div>
