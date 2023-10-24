@@ -36,7 +36,7 @@ jobs:
 
       - name: Deploy to GitHub Pages
         run: |
-          git remote set-url origin https://github.com/sakusanpuwan/hack-4-change.git
+          git remote set-url origin https://${{ secrets.GITHUB_TOKEN}}@github.com/sakusanpuwan/hack-4-change.git
           npm run deploy -- -u "github-actions-bot <support+actions@github.com>"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
