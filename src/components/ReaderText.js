@@ -123,7 +123,7 @@ const ReaderText = () => {
             });
             const pdfBytes = await pdfDoc.save(); // into an array of bytes making up a PDF file
             const blob = new Blob([pdfBytes], { type: 'application/pdf' });
-            saveAs(blob, 'transcribedText.pdf');
+            saveAs(blob, 'readerText.pdf');
         };
 
     return (
