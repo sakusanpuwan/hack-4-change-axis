@@ -36,6 +36,7 @@ const Register = ({handleLoginStatus}) => {
     return (
         <div className='Register'>
             <h3>Register</h3>
+            <br></br>
             <form onSubmit={handleRegister} className="form">
                 <input type='email' placeholder='email' className="input-field" onChange={(event) => {setEmail(event.target.value)}}></input>
                 <input type='password' placeholder='password' className="input-field" onChange={(event) => {setPassword(event.target.value)}}></input>
