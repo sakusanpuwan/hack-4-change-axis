@@ -7,10 +7,10 @@
   min-height: 100vh;
   margin: 0;
   padding: 0;
-  background-color: #444654;
+  background-color:#181818;
   color: antiquewhite;
   margin-bottom: 0;
-  margin-left: 15vw;
+  margin-left: 20vw;
   font-family: 'Roboto Mono', monospace;
 }
 
@@ -21,14 +21,16 @@ h1{
 .sidebar{
   top: 0;
   left: 0;
-  background-color:#181818;
+  background-color: #444654;
   height: 100vh;
-  width: 16vw;
+  width: 20vw;
   position: fixed;
 }
 
 .sidebar h2{
   font-family: 'Expletus Sans', sans-serif;
+  font-size:xx-large;
+  padding-bottom: 10%;
 }
 
 
@@ -57,17 +59,58 @@ h1{
   display: block;
   text-decoration: none;
   color: antiquewhite;
+  transition: color 0.3s;
 }
 
 .navbar > li:hover{
-  background-color: #343541;
+  background-color: #e2e2e9;
+  color: black;
 }
 
+.navbar li a:hover {
+  color: black !important;
+}
 
 .profile{
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-button{
+  background-color: white;
+  color: black;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  margin-top: 10%;
+  box-shadow: none; 
+  font-weight: bold; 
+  font-family: 'Roboto Mono', monospace;
+}
+
+.auth-button:hover{
+  background-color: black;
+  color: white;
+}
+
+.auth-page {
+  text-align: center;
+  padding: 20px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 16px;
 }
 
 

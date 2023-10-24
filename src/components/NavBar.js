@@ -27,26 +27,26 @@ const NavBar = () => {
             <h2>AXIS</h2>
             {loginStatus && auth.currentUser !== null ?         
             <div className='profile'> 
-                <img src={auth.currentUser.photoURL} width={'40px'} style= {{borderRadius: "50%"}} alt='profile-pic'></img>
+                <img src={auth.currentUser.photoURL} width={'80px'} style= {{borderRadius: "50%"}} alt='profile-pic'></img>
                 <h3>{auth.currentUser.displayName}</h3>
             </div>
             :
             <Link to="/auth-form">
-            <button type="button">
+            <button type="button" className='auth-button'>
                  Sign In
             </button>
             </Link>
             }
             <ul className='navbar'>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/writer-audio">Writer Audio</Link></li>
-                <li><Link to="/audio-transcript">Audio Transcript</Link></li>
-                <li><Link to="/writer-text">Writer Text</Link></li>
-                <li><Link to="/reader-text">Reader Text</Link></li>
-                <li><Link to="/reader-audio">Reader Audio</Link></li>
+                <li><Link to="/">Home 🏠</Link></li>
+                <li><Link to="/writer-audio">Audio Writer ✒️</Link></li>
+                <li><Link to="/audio-transcript">Audio Transcript ✒️</Link></li>
+                <li><Link to="/writer-text">Text Writer ✒️</Link></li>
+                <li><Link to="/reader-audio">Audio Reader 🗣️</Link></li>
+                <li><Link to="/reader-text">Text Reader 🗣️</Link></li>
                 {loginStatus && <li><Link to="/saved">Saved</Link></li>}
             </ul>
-            {loginStatus && <button onClick={() => {
+            {loginStatus && <button className='auth-button' onClick={() => {
                 signOut(auth);
                 handleLoginStatus();
             }

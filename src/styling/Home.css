@@ -1,5 +1,12 @@
-.login-forms{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+.home-container{
+    width: 80%;
+    margin-left: 10%;
+}
+
+.info{
+    text-align: left;
+}
+
+.tools{
+    text-align: left;
 }
