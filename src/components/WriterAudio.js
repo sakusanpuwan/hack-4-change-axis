@@ -55,9 +55,7 @@ const WriterAudio = () => {
         <br></br>
         {transcript && <CopyButton text={transcript}/>}
         {transcript && <ReadingRuler/>}
-        <div className="export-section">
-            <button id="pdfButton" onClick={exportPDF}>Export PDF</button>
-        </div>
+        {transcript && <button id="pdfButton" onClick={exportPDF}>Export PDF</button>}
     </div>
     );
 }
