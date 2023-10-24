@@ -35,7 +35,8 @@ jobs:
           npm run build
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          personal_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
+        run: |
+          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/hack-4-change.git
+          npm run deploy -- -u "github-actions-bot <support+actions@github.com>"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB+TOKEN }}
