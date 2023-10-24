@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/hack-4-change-axis/static/css/main.62a5683a.css",
+    "main.js": "/hack-4-change-axis/static/js/main.7a315287.js",
+    "static/js/787.5e1685c3.chunk.js": "/hack-4-change-axis/static/js/787.5e1685c3.chunk.js",
+    "index.html": "/hack-4-change-axis/index.html",
+    "main.62a5683a.css.map": "/hack-4-change-axis/static/css/main.62a5683a.css.map",
+    "main.7a315287.js.map": "/hack-4-change-axis/static/js/main.7a315287.js.map",
+    "787.5e1685c3.chunk.js.map": "/hack-4-change-axis/static/js/787.5e1685c3.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.62a5683a.css",
+    "static/js/main.7a315287.js"
+  ]
+}
