@@ -1,6 +1,5 @@
 import { useState } from "react";
 import fetchGPTResponse from "../services/FetchGPTResponse";
-import { PropagateLoader } from "react-spinners";
 import '../styling/ReaderAudio.css';
 import { Autocomplete, TextField } from "@mui/material";
 
@@ -15,7 +14,6 @@ const ReaderAudio = () => {
     const textToSpeech = new SpeechSynthesisUtterance(inputText);
     const [playbackSpeed, setPlaybackSpeed] = useState(1);
 
-    const [language, setLanguage] = useState("");
     const [languageCode, setLanguageCode] = useState("");
 
     const languages = [
@@ -27,10 +25,9 @@ const ReaderAudio = () => {
 
     const handleChange = async (language,languageCode) => {
         setIsLoading(true);
-        const request = `Translate the following following text into ${language}. Text to translate is ${inputText}`;
+        const request = `Translate into ${language} the follwing text: ${inputText}`;
         const response = await fetchGPTResponse(request);
         setInputText(response);
-        setLanguage(language);
         setLanguageCode(languageCode)
         setIsLoading(false);
     }
@@ -50,7 +47,7 @@ const ReaderAudio = () => {
         event.preventDefault();
         window.speechSynthesis.cancel();
         if (isLoading === true) {
-            alert('Please wait')
+            alert('Please wait and try again')
         } else{
             textToSpeech.rate = playbackSpeed; 
             textToSpeech.lang = languageCode;
@@ -85,7 +82,6 @@ const ReaderAudio = () => {
                     <button id="pauseButton" onClick={handlePause}>Pause</button>
                     <button id="resumeButton" onClick={handleResume}>Resume</button>
                     <Autocomplete
-                    disablePortal
                     id="combo-box-demo"
                     sx={{height:50,width:150,backgroundColor: 'white',borderRadius:5}}
                     options={languages}

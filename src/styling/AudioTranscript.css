@@ -1,0 +1,86 @@
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loading-bar {
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+  border: 6px solid transparent;
+  border-top: 6px solid #1890ff;
+  border-radius: 50%;
+  position: relative;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.transcription-box {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin: 10px 0; /* Adjust the margin here */
+  border-radius: 5px;
+  text-align: left;
+  max-width: 80%;
+}
+
+.transcription-text {
+  font-size: 14px;
+  height: 100%;
+  width: 100%;
+  line-height: 20pt;
+  text-align: left;
+  overflow-y: scroll;
+}
+
+h3 {
+  margin: 0; 
+  padding: 0; 
+}
+
+.copied-button{
+  margin-top: 10px; 
+}
+
+.copied-message {
+  color: green;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+
+input[type="file"]::file-selector-button {
+  margin-right: 20px;
+  border: none;
+  background: #084cdf;
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+input[type="file"]::file-selector-button:hover {
+  background: #0d45a5;
+}
+
+.audio-transcript-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

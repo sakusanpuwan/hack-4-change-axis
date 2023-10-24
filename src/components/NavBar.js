@@ -6,6 +6,7 @@ import ReaderText from './ReaderText'
 import ReaderAudio from './ReaderAudio'
 import WriterText from './WriterText'
 import WriterAudio from './WriterAudio'
+import AudioTranscript from './AudioTranscript'
 import {auth} from '../firebase'
 import { signOut } from 'firebase/auth'
 import Saved from './Saved'
@@ -30,7 +31,11 @@ const NavBar = () => {
                 <h3>{auth.currentUser.displayName}</h3>
             </div>
             :
-            <h4>Hey</h4>
+            <Link to="/">
+            <button type="button">
+                 Sign In
+            </button>
+            </Link>
             }
             <ul className='navbar'>
                 <li><Link to="/">Home</Link></li>
@@ -38,6 +43,7 @@ const NavBar = () => {
                 <li><Link to="/reader-audio">Reader Audio</Link></li>
                 <li><Link to="/writer-text">Writer Text</Link></li>
                 <li><Link to="/writer-audio">Writer Audio</Link></li>
+                <li><Link to="/audio-transcript">Audio Transcript</Link></li>
                 {loginStatus && <li><Link to="/saved">Saved</Link></li>}
             </ul>
             {loginStatus && <button onClick={() => {
@@ -53,6 +59,7 @@ const NavBar = () => {
             <Route path='/reader-audio' element={<ReaderAudio/>}/>
             <Route exact path='/writer-text' element={<WriterText/>}/>
             <Route exact path='/writer-audio' element={<WriterAudio/>}/>
+            <Route exact path='/audio-transcript' element={<AudioTranscript/>}/>
             <Route exact path='/saved' element={<Saved/>}/>
             <Route exact path='/export' element={<Export/>}/>
 

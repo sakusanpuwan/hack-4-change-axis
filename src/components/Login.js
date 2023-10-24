@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { signInWithEmailAndPassword } from "firebase/auth";
 import {auth} from '../firebase'
+import '../styling/Login.css'
 
 const Login = ({handleLoginStatus}) => {
 
@@ -19,6 +20,7 @@ const Login = ({handleLoginStatus}) => {
         .catch((error) => {
             setError(true)
             const errorMessage = error.message;
+            alert("Incorrect email or password. Please try again")
             console.log(errorMessage);
         });
     }
@@ -26,10 +28,10 @@ const Login = ({handleLoginStatus}) => {
     return (
         <div className='login'>
             <h3>Login</h3>
-            <form onSubmit={handleLogin}>
-                <input type='email' placeholder='email' onChange={(event) => {setEmail(event.target.value)}}></input>
-                <input type='password' placeholder='password' onChange={(event) => {setPassword(event.target.value)}}></input>
-                <button type='submit'>Login</button>
+            <form onSubmit={handleLogin} className="form">
+                <input type='email' placeholder='email' className="input-field" onChange={(event) => {setEmail(event.target.value)}}></input>
+                <input type='password' placeholder='password' className="input-field" onChange={(event) => {setPassword(event.target.value)}}></input>
+                <button type='submit' className="login-button">Login</button>
                 {error && <span>Wrong email or password</span>}
             </form>
         </div>
