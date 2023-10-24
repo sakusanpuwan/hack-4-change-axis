@@ -32,7 +32,6 @@ jobs:
 
       - name: Build
         run: |
-          cp .env
           npm run build
 
       - name: Deploy to GitHub Pages
