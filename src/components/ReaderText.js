@@ -6,6 +6,8 @@ import ReadFormatOptions from "./ReadFormatOptions";
 import {textVide} from "text-vide";
 import ReactHtmlParser from 'react-html-parser';
 import SaveButton from './SaveButton';
+import { PDFDocument, StandardFonts, rgb } from 'pdf-lib';
+import { saveAs } from 'file-saver';
 
 
 const ReaderText = () => {
@@ -101,6 +103,28 @@ const ReaderText = () => {
         setResponse(bionic);
     }
 
+    // Export as PDF
+        // consider adding - font, font size, colour params as chosen by the user
+        const exportPDF = async () => {
+            const pdfDoc = await PDFDocument.create();
+            const page = pdfDoc.addPage(); 
+                // consider adding multiple pages dynamically as text size increases
+            const {width, height} = page.getSize();
+            const timesNewRoman = await pdfDoc.embedFont(StandardFonts.TimesRoman);
+            // for text in bold, currently exports as <b></b> - needs a converter  
+            page.drawText(response, {
+                x: 50,
+                y: height - 5 * 10, // page height - 5 * font size
+                size: 10,
+                color: rgb(0, 0, 0),
+                maxWidth: width - 100, // to allow text to wrap
+                lineHeight: 20,
+                font: timesNewRoman
+            });
+            const pdfBytes = await pdfDoc.save(); // into an array of bytes making up a PDF file
+            const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+            saveAs(blob, 'transcribedText.pdf');
+        };
 
     return (
         <div className="reader-text-container">
@@ -137,6 +161,9 @@ const ReaderText = () => {
                 <div>
                     <p className='output-text' style={{color:colour}}>{ReactHtmlParser(response)}</p>
                     {response && <SaveButton response={response}/>}
+                    <div className="export-section">
+                        <button id="pdfButton" onClick={exportPDF}>Export PDF</button>
+                    </div>
                 </div>
             }
             
