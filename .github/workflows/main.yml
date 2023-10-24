@@ -32,7 +32,7 @@ jobs:
 
       - name: Build
         run: |
-          cp .env.production .env
+          cp .env
           npm run build
 
       - name: Deploy to GitHub Pages
