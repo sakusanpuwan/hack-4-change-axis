@@ -39,11 +39,11 @@ const NavBar = () => {
             }
             <ul className='navbar'>
                 <li><Link to="/">Home</Link></li>
-                <li><Link to="/reader-text">Reader Text</Link></li>
-                <li><Link to="/reader-audio">Reader Audio</Link></li>
-                <li><Link to="/writer-text">Writer Text</Link></li>
                 <li><Link to="/writer-audio">Writer Audio</Link></li>
                 <li><Link to="/audio-transcript">Audio Transcript</Link></li>
+                <li><Link to="/writer-text">Writer Text</Link></li>
+                <li><Link to="/reader-text">Reader Text</Link></li>
+                <li><Link to="/reader-audio">Reader Audio</Link></li>
                 {loginStatus && <li><Link to="/saved">Saved</Link></li>}
             </ul>
             {loginStatus && <button onClick={() => {
@@ -55,11 +55,11 @@ const NavBar = () => {
 
         <Routes>
             <Route exact path='/' element={<Home handleLoginStatus = {handleLoginStatus}/>}/>
-            <Route path='/reader-text' element={<ReaderText/>}/>
-            <Route path='/reader-audio' element={<ReaderAudio/>}/>
-            <Route exact path='/writer-text' element={<WriterText/>}/>
             <Route exact path='/writer-audio' element={<WriterAudio/>}/>
             <Route exact path='/audio-transcript' element={<AudioTranscript/>}/>
+            <Route exact path='/writer-text' element={<WriterText/>}/>
+            <Route path='/reader-text' element={<ReaderText/>}/>
+            <Route path='/reader-audio' element={<ReaderAudio/>}/>
             <Route exact path='/saved' element={<Saved/>}/>
             <Route exact path='/export' element={<Export/>}/>
 
