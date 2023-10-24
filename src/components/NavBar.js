@@ -11,6 +11,7 @@ import {auth} from '../firebase'
 import { signOut } from 'firebase/auth'
 import Saved from './Saved'
 import Export from './Export';
+import AuthForm from './AuthForm'
 
 
 const NavBar = () => {
@@ -31,7 +32,7 @@ const NavBar = () => {
                 <h3>{auth.currentUser.displayName}</h3>
             </div>
             :
-            <Link to="/">
+            <Link to="/auth-form">
             <button type="button">
                  Sign In
             </button>
@@ -62,7 +63,7 @@ const NavBar = () => {
             <Route path='/reader-audio' element={<ReaderAudio/>}/>
             <Route exact path='/saved' element={<Saved/>}/>
             <Route exact path='/export' element={<Export/>}/>
-
+            <Route path='/auth-form' element={<AuthForm handleLoginStatus = {handleLoginStatus}/>}/>
         </Routes>
     </div>
     )

@@ -28,6 +28,7 @@ const Login = ({handleLoginStatus}) => {
     return (
         <div className='login'>
             <h3>Login</h3>
+            <br></br>
             <form onSubmit={handleLogin} className="form">
                 <input type='email' placeholder='email' className="input-field" onChange={(event) => {setEmail(event.target.value)}}></input>
                 <input type='password' placeholder='password' className="input-field" onChange={(event) => {setPassword(event.target.value)}}></input>
