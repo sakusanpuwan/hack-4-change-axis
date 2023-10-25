@@ -32,9 +32,39 @@
     height: 30px;
 }
 
+.button-section select{
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    box-shadow: none;
+    font-weight: bold;
+    font-family: 'Roboto Mono', monospace;
+}
+
+#bionicButton{
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: none;
+    font-weight: bold;
+    font-family: 'Roboto Mono', monospace;
+}
+
 .output{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.output-buttons{
+    display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
 }

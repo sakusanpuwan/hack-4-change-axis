@@ -8,7 +8,7 @@ const ReadingRuler = () => {
 
     return (
         <div>
-            <button onClick={() => {setRuler(!ruler)}}>📏</button>
+            <button className='ruler-button' onClick={() => {setRuler(!ruler)}}>Ruler 📏</button>
             {ruler && 
             <Draggable>
                 <div className='reading-ruler'>

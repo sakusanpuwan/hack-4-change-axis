@@ -83,15 +83,30 @@ const ReaderAudio = () => {
                 <div className="playback-section">
                     <p>Set playback speed:</p>
                     <input type="range" id="playbackSpeed" min="0.5" max="2" step="0.5" value={playbackSpeed} onChange={handleSpeed}/>
-                    <button id="listenButton" onClick={handleListen}>Listen Back</button>
-                    <button id="pauseButton" onClick={handlePause}>Pause</button>
-                    <button id="resumeButton" onClick={handleResume}>Resume</button>
+                    <button id="listenButton" onClick={handleListen}>Listen 🎧</button>
+                    <button id="pauseButton" onClick={handlePause}>Pause ⏸️</button>
+                    <button id="resumeButton" onClick={handleResume}>Resume ▶️ </button>
                     <Autocomplete
                     id="combo-box-demo"
-                    sx={{height:50,width:150,backgroundColor: 'white',borderRadius:5}}
+                    sx={{
+                        height: 50,
+                        width: 150,
+                        backgroundColor: 'white',
+                        marginLeft: '5px',
+                        borderRadius: 3,
+                        color: 'black', // Text color
+                        '& a': {
+                          textDecoration: 'none', // Remove underline from links
+                          display: 'inline-block',
+                          cursor: 'pointer',
+                          boxShadow: 'none',
+                          fontWeight: 'bold',
+                          fontFamily: 'Roboto Mono, monospace',
+                        },
+                      }}
                     options={languages}
                     filterSelectedOptions
-                    renderInput={(params) => <TextField {...params} label="Languages" placeholder="Choose language"/>}
+                    renderInput={(params) => <TextField {...params} label="Languages" placeholder="Choose language" sx={{fontFamily:'Roboto Mono, monospace'}}/>}
                     onChange={(event, chosenValue) => {handleChange(chosenValue.label,chosenValue.key)}}
                     />
                 </div>
