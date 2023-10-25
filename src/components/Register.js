@@ -35,12 +35,12 @@ const Register = ({handleLoginStatus}) => {
  
     return (
         <div className='Register'>
-            <h3>Register</h3>
+            <h3 style={{paddingBottom:'5px'}} >Register</h3>
             <form onSubmit={handleRegister} className="form">
-                <input type='email' placeholder='email' className="input-field" onChange={(event) => {setEmail(event.target.value)}}></input>
-                <input type='password' placeholder='password' className="input-field" onChange={(event) => {setPassword(event.target.value)}}></input>
-                <input type='name' placeholder='name' className="input-field" onChange={(event) => {setName(event.target.value)}}></input>
-                <input type='picture' placeholder='picture' className="input-field" onChange={(event) => {setPicture(event.target.value)}}></input>
+                <input type='email' placeholder='Email' className="input-field" onChange={(event) => {setEmail(event.target.value)}}></input>
+                <input type='password' placeholder='Password' className="input-field" onChange={(event) => {setPassword(event.target.value)}}></input>
+                <input type='name' placeholder='Name' className="input-field" onChange={(event) => {setName(event.target.value)}}></input>
+                <input type='picture' placeholder='Picture' className="input-field" onChange={(event) => {setPicture(event.target.value)}}></input>
                 <button type='submit' className="login-button">Register</button>
             </form>
         </div>

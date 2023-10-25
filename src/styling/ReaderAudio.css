@@ -46,7 +46,7 @@
 
 #generateKeywordsButton {
     margin-top: 10px;
-    width: 150px;
+    width: 180px;
     height: 30px;
 }
 
@@ -70,6 +70,18 @@
     text-align: left;
     margin-top: 20px;
 }
+
+.playback-section button{
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    box-shadow: none; 
+    font-weight: bold; 
+    font-family: 'Roboto Mono', monospace;
+}
   
 .bionic-section {
     display: flex;
@@ -91,14 +103,14 @@
 #pauseButton {
     margin-top: 10px;
     margin-left: 10px;
-    width: 70px;
+    width: 100px;    
     height: 30px;
 }
   
 #resumeButton {
     margin-top: 10px;
     margin-left: 10px;
-    width: 70px;
+    width: 100px;
     height: 30px;
 }
   
@@ -132,10 +144,8 @@
 
 
 .reader-audio-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
+    width: 80%;
+    margin-left: 10%;
 }
 
 form{

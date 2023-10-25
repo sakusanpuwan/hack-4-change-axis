@@ -10,6 +10,7 @@ import AudioTranscript from './AudioTranscript'
 import {auth} from '../firebase'
 import { signOut } from 'firebase/auth'
 import Saved from './Saved'
+import AuthForm from './AuthForm'
 
 
 const NavBar = () => {
@@ -23,29 +24,29 @@ const NavBar = () => {
     return (
         <div>
             <nav className='sidebar'>
-            <h2 style= {{borderBottom:"3px solid #444654"}}>AXIS</h2>
+            <h2>AXIS</h2>
             {loginStatus && auth.currentUser !== null ?         
             <div className='profile'> 
-                <img src={auth.currentUser.photoURL} width={'40px'} style= {{borderRadius: "50%"}} alt='profile-pic'></img>
+                <img src={auth.currentUser.photoURL} width={'70px'} style= {{borderRadius: "50%"}} alt='profile-pic'></img>
                 <h3>{auth.currentUser.displayName}</h3>
             </div>
             :
-            <Link to="/">
-            <button type="button">
+            <Link to="/auth-form">
+            <button type="button" className='auth-button'>
                  Sign In
             </button>
             </Link>
             }
             <ul className='navbar'>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/reader-text">Reader Text</Link></li>
-                <li><Link to="/reader-audio">Reader Audio</Link></li>
-                <li><Link to="/writer-text">Writer Text</Link></li>
-                <li><Link to="/writer-audio">Writer Audio</Link></li>
-                <li><Link to="/audio-transcript">Audio Transcript</Link></li>
+                <li><Link to="/">Home 🏠</Link></li>
+                <li><Link to="/writer-audio">Audio Writer ✒️</Link></li>
+                <li><Link to="/audio-transcript">Audio Transcript ✒️</Link></li>
+                <li><Link to="/writer-text">Text Writer ✒️</Link></li>
+                <li><Link to="/reader-audio">Audio Reader 🗣️</Link></li>
+                <li><Link to="/reader-text">Text Reader 🗣️</Link></li>
                 {loginStatus && <li><Link to="/saved">Saved</Link></li>}
             </ul>
-            {loginStatus && <button onClick={() => {
+            {loginStatus && <button className='auth-button' onClick={() => {
                 signOut(auth);
                 handleLoginStatus();
             }
@@ -54,12 +55,13 @@ const NavBar = () => {
 
         <Routes>
             <Route exact path='/' element={<Home handleLoginStatus = {handleLoginStatus}/>}/>
-            <Route path='/reader-text' element={<ReaderText/>}/>
-            <Route path='/reader-audio' element={<ReaderAudio/>}/>
-            <Route exact path='/writer-text' element={<WriterText/>}/>
             <Route exact path='/writer-audio' element={<WriterAudio/>}/>
             <Route exact path='/audio-transcript' element={<AudioTranscript/>}/>
+            <Route exact path='/writer-text' element={<WriterText/>}/>
+            <Route path='/reader-text' element={<ReaderText/>}/>
+            <Route path='/reader-audio' element={<ReaderAudio/>}/>
             <Route exact path='/saved' element={<Saved/>}/>
+            <Route path='/auth-form' element={<AuthForm handleLoginStatus = {handleLoginStatus}/>}/>
         </Routes>
     </div>
     )

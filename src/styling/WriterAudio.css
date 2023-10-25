@@ -1,0 +1,22 @@
+.info{
+    text-align: left;
+}
+
+.writer-audio-container{
+    width: 80%;
+    margin-left: 10%;
+}
+
+.writer-audio-container button{
+    background-color: white;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    box-shadow: none; 
+    font-weight: bold; 
+    font-family: 'Roboto Mono', monospace;
+    margin: 5px;
+}

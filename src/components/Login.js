@@ -27,11 +27,11 @@ const Login = ({handleLoginStatus}) => {
  
     return (
         <div className='login'>
-            <h3>Login</h3>
+            <h3 style={{paddingBottom:'5px'}}>Login</h3>
             <form onSubmit={handleLogin} className="form">
-                <input type='email' placeholder='email' className="input-field" onChange={(event) => {setEmail(event.target.value)}}></input>
-                <input type='password' placeholder='password' className="input-field" onChange={(event) => {setPassword(event.target.value)}}></input>
-                <button type='submit' className="login-button">Login</button>
+                <input type='email' placeholder='Email' className="input-field" onChange={(event) => {setEmail(event.target.value)}}></input>
+                <input type='password' placeholder='Password' className="input-field" onChange={(event) => {setPassword(event.target.value)}}></input>
+                <button type='submit' className="login-button">Log in</button>
                 {error && <span>Wrong email or password</span>}
             </form>
         </div>

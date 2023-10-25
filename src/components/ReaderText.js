@@ -1,11 +1,15 @@
 import '../styling/ReaderText.css'
+import '../styling/ReadingRuler.css'
 import { useState } from "react";
 import fetchGPTResponse from "../services/FetchGPTResponse";
 import { PropagateLoader } from "react-spinners";
-import ReadFormatOptions from "./ReadFormatOptions";
 import {textVide} from "text-vide";
 import ReactHtmlParser from 'react-html-parser';
 import SaveButton from './SaveButton';
+import { PDFDocument, StandardFonts, rgb } from 'pdf-lib';
+import { saveAs } from 'file-saver';
+import CopyButton from './CopyButton';
+import ReadingRuler from './ReadingRuler';
 
 
 const ReaderText = () => {
@@ -17,21 +21,39 @@ const ReaderText = () => {
     const [keywords, setKeywords] = useState([]);
     const [fixationPoint, setFixationPoint] = useState(2);
     const [colour, setColour] = useState("#FAEBD7");
+    const [language, setLanguage] = useState("");
 
-    const handleClick = async () => {
+    const handleSyllableSpacing = async (event) => {
+        event.preventDefault();
         setIsLoading(true)
-        const updatedPrompt = `The text to manipulate will be enclosed within arrow brackets (<>). Do the following manipulations to the text ${prompt}. The text to manipulate is <${input}>`;
-        console.log(updatedPrompt);
-        setPrompt(updatedPrompt);
+        const updatedPrompt = `add hyphens between each syllables in each word in the following text:${input}`;
+        setPrompt(prompt);
         const response = await fetchGPTResponse(updatedPrompt);
         setResponse(response);
         setIsLoading(false);
         setPrompt("");
-    } 
+    }
 
-    // Chains formats from ReadFormatOptions
-    const updatePrompt = (formatter) => {
-        setPrompt((prevPrompt) => prevPrompt + ","+ formatter)
+    const handleSummarise = async (event) => {
+        event.preventDefault();
+        setIsLoading(true)
+        const updatedPrompt = `summarise as simply as possible the following text:${input}`;
+        setPrompt(prompt);
+        const response = await fetchGPTResponse(updatedPrompt);
+        setResponse(response);
+        setIsLoading(false);
+        setPrompt("");
+    }
+
+    const handleTranslate = async (event) => {
+        event.preventDefault();
+        setIsLoading(true)
+        const updatedPrompt = `translate into ${language} the following text:${input}`;
+        setPrompt(prompt);
+        const response = await fetchGPTResponse(updatedPrompt);
+        setResponse(response);
+        setIsLoading(false);
+        setPrompt("");
     }
 
     async function getKeywords() {
@@ -101,45 +123,95 @@ const ReaderText = () => {
         setResponse(bionic);
     }
 
+    // Export as PDF
+        // consider adding - font, font size, colour params as chosen by the user
+        const exportPDF = async () => {
+            const pdfDoc = await PDFDocument.create();
+            const page = pdfDoc.addPage(); 
+                // consider adding multiple pages dynamically as text size increases
+            const {width, height} = page.getSize();
+            const timesNewRoman = await pdfDoc.embedFont(StandardFonts.TimesRoman);
+            // for text in bold, currently exports as <b></b> - needs a converter  
+            page.drawText(response, {
+                x: 50,
+                y: height - 5 * 10, // page height - 5 * font size
+                size: 10,
+                color: rgb(0, 0, 0),
+                maxWidth: width - 100, // to allow text to wrap
+                lineHeight: 20,
+                font: timesNewRoman
+            });
+            const pdfBytes = await pdfDoc.save(); // into an array of bytes making up a PDF file
+            const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+            saveAs(blob, 'readerText.pdf');
+        };
 
     return (
         <div className="reader-text-container">
-            <h1>ReaderText</h1>
+            <br></br>
+            <div className='info'>
+                <h1>Text Reader</h1>
+                <p>Make reading easier</p>
+            </div>
             <br></br>
             <div className='reader-text-input'>
                 <form>
                     <textarea rows={10} cols={80} onChange={(event) => setInput(event.target.value)} placeholder="Enter text here..."></textarea>
                     <br></br>
                 </form>
-                <div>
-                    <ReadFormatOptions updatePrompt = {updatePrompt}/>
-                </div>
             </div>
             <div className="text-format-section">
                 <div className="button-section">
-                    <button onClick={handleKeywords} value="submit">Generate Keywords</button>  
-                    <button onClick={handleUppercaseKeywords} value="submit">Uppercase Keywords</button>  
+                    <button onClick={handleKeywords} value="submit">🔄 Keywords</button>  
+                    <button onClick={handleUppercaseKeywords} value="submit">Capital Keywords</button>  
                     <button onClick={handleBoldKeywords} value="submit">Bold Keywords</button> 
-                    <button onClick={handleClick} value="submit">Submit</button>
+                    <button onClick={handleSyllableSpacing} value="submit">Space Syllables</button>
+                    <button onClick={handleSummarise} value="submit">Summarise</button>
+                    <div>
+                        <select onChange={(e) => {setLanguage(e.target.value)}}>
+                            <option value="English">Select a Language</option>
+                            <option value="German">German</option>
+                            <option value="Spanish">Spanish</option>
+                            <option value="French">French</option>
+                        </select>
+                        <button onClick={handleTranslate} value="submit">Translate 🌍</button>
+                    </div>
+
                 </div> 
                 <div className="bionic-section">
                     <p>Change Bionic fixation point:</p>
                     <input type="range" id="fixationPoint" min="1" max="5" value={fixationPoint} onChange={handleFixation}/>
-                    <button id="bionicButton" onClick={handleBionic}>Generate Bionic</button>
+                    <button id="bionicButton" onClick={handleBionic}>🔄 Bionic</button>
                 </div>   
                 <input type="color" value={colour} onChange={(e) => {setColour(e.target.value)}}></input>
                 <label>Choose colour</label>
             </div>
-            <br></br>
-            {isLoading === true ? 
-                <PropagateLoader color="white" id="loader"/> 
-            : 
-                <div>
-                    <p className='output-text' style={{color:colour}}>{ReactHtmlParser(response)}</p>
-                    {response && <SaveButton response={response}/>}
-                </div>
-            }
-            
+            <br></br>            
+            <div className='output'>
+                {isLoading === true ? 
+                    <PropagateLoader color="white" id="loader"/> 
+                : 
+                    <div>
+                        {response && (
+                            <div>
+                            <p className='output-text' style={{color:colour}}>{ReactHtmlParser(response)}</p>
+                            <br></br>
+                            <div className='output-buttons'>
+                                <SaveButton response={response}/>
+                                <ReadingRuler/>
+                                <div className="export-section">
+                                    <button id="pdfButton" onClick={exportPDF}>Export PDF</button>
+                                </div>
+                            </div>
+                            <CopyButton text={response}/>
+
+                            </div>
+                        )}
+                    </div>
+                }
+            </div>
+
+
         </div>
     )
 }

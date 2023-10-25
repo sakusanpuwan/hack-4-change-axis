@@ -1,0 +1,52 @@
+.button-section{
+    display: flex;
+    flex-direction: row;
+    align-content: space-around;
+
+}
+
+.button-section button{
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 150px;
+    height: 30px;
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    box-shadow: none; 
+    font-weight: bold; 
+    font-family: 'Roboto Mono', monospace;
+}
+
+.output-section{
+    text-align: center;
+    width: 80%;
+    margin: auto;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.writer-text-container{
+    width: 80%;
+    margin-left: 10%;
+
+}
+
+.info{
+    text-align: left;
+}
+
+#pdfButton{
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    box-shadow: none;
+    font-weight: bold;
+    font-family: 'Roboto Mono', monospace;
+}

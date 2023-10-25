@@ -3,6 +3,9 @@ import fetchGPTResponse from "../services/FetchGPTResponse";
 import { PropagateLoader } from "react-spinners";
 import SaveButton from "./SaveButton";
 import ReactHtmlParser from 'react-html-parser';
+import '../styling/WriterText.css'
+import CopyButton from "./CopyButton";
+import ReadingRuler from "./ReadingRuler";
 
 
 const WriterText = () => {
@@ -22,12 +25,20 @@ const WriterText = () => {
     } 
 
     return (
-        <div>
-            <h1>WriterText</h1>
+        <div className="writer-text-container">
+        <br></br>
+        <div className='info'>
+            <h1>Text Writer</h1>
+            <p>Upgrade your text</p>
+        </div>
+        <br></br>
             <form>
                 <textarea rows={10} cols={80} onChange={(event) => setInput(event.target.value)} placeholder="Enter text here..."></textarea>
-                <button value="spell check" onClick={(e) => {handleClick(e)}}>Spell Check</button>
-                <button value="improve" onClick={(e) => {handleClick(e)}}>Improve</button>
+                <div className="button-section">
+                <button value="spell check" onClick={(e) => {handleClick(e)}}>Spell Check ✔️</button>
+                <button value="improve text suitable for work related purposes" onClick={(e) => {handleClick(e)}}>Improve 👍🏽</button>
+                <button value="remove negatively charged words,rewrite positively suitable for work communication" onClick={(e) => {handleClick(e)}}>Sentiment 🙂</button>
+                </div>
             </form>
             <br></br>
             {isLoading === true ? 
@@ -36,6 +47,8 @@ const WriterText = () => {
                 <div>
                     <p className='output-text' >{ReactHtmlParser(response)}</p>
                     {response && <SaveButton response={response}/>}
+                    {response && <CopyButton text={response}/>}
+                    {response && <ReadingRuler/>}
                 </div>
             }
         </div>

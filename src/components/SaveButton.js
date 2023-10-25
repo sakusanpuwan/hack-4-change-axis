@@ -1,6 +1,7 @@
 import React from 'react'
-import { doc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
+import { doc, updateDoc, arrayUnion } from "firebase/firestore";
 import {auth , db } from '../firebase'
+import '../App.css'
 
 
 const SaveButton = ({response}) => {
@@ -25,7 +26,7 @@ const SaveButton = ({response}) => {
     }
 
     return (
-        <button onClick={handleAdd}>Save</button>
+        <button onClick={handleAdd} className='save-button'>Save</button>
     )
 }
 

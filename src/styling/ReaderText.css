@@ -1,16 +1,7 @@
-.read-format-options{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
+.reader-text-container{
+    width: 80%;
+    margin-left: 10%;
 }
-
-.reader-text-input{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
-
 .text-format-section{
     display: flex;
     flex-direction: column;
@@ -19,9 +10,19 @@
 }
 
 .output-text{
+    font-family: Arial, Helvetica, sans-serif;
     text-align: center;
     width: 80%;
     margin: auto;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.button-section{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .button-section button{
@@ -30,3 +31,41 @@
     width: 150px;
     height: 30px;
 }
+
+.button-section select{
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    box-shadow: none;
+    font-weight: bold;
+    font-family: 'Roboto Mono', monospace;
+}
+
+#bionicButton{
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: none;
+    font-weight: bold;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.output{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.output-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
