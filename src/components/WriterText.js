@@ -41,7 +41,7 @@ const WriterText = () => {
         </div>
         <br></br>
             <form>
-                <textarea rows={10} cols={80} onChange={(event) => setInput(event.target.value)} placeholder="Enter text here..."></textarea>
+                <textarea id='inputTextBox' rows={10} cols={80} onChange={(event) => setInput(event.target.value)} placeholder="Enter text here..."></textarea>
                 <div className="button-section">
                 <button value="spell check" onClick={(e) => {handleClick(e)}}>Spell Check ✔️</button>
                 <button value="improve text suitable for work related purposes" onClick={(e) => {handleClick(e)}}>Improve 👍🏽</button>
@@ -50,14 +50,19 @@ const WriterText = () => {
             </form>
             <br></br>
             {isLoading === true ? 
-                <PropagateLoader color="white" id="loader"/> 
+                <div id='loading-bar'><PropagateLoader color="white" id="loader"/></div> 
             : 
                 <div>
                     <p className='output-text' >{ReactHtmlParser(response)}</p>
-                    {response && <SaveButton response={response}/>}
-                    {response && <CopyButton text={response}/>}
-                    {response && <ReadingRuler/>}
+                    <div className='output-button'>
+                        {response && <SaveButton response={response}/>}
+                        {response && <CopyButton text={response}/>}
+                    </div>
+                    <div className='ruler'>
+                        {response && <ReadingRuler/>}
+                    </div>
                 </div>
+                
             }
         </div>
     )

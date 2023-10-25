@@ -164,7 +164,7 @@ const ReaderText = () => {
             <br></br>
             <div className='reader-text-input'>
                 <form>
-                    <textarea rows={10} cols={80} onChange={(event) => setInput(event.target.value)} placeholder="Enter text here..."></textarea>
+                    <textarea id="inputTextBox" rows={10} cols={80} onChange={(event) => setInput(event.target.value)} placeholder="Enter text here..."></textarea>
                     <br></br>
                 </form>
             </div>
@@ -197,12 +197,12 @@ const ReaderText = () => {
             <br></br>            
             <div className='output'>
                 {isLoading === true ? 
-                    <PropagateLoader color="white" id="loader"/> 
+                    <div id='loading-bar'><PropagateLoader color="white" id="loader"/> </div>
                 : 
                     <div>
                         {response && (
                             <div>
-                            <p className='output-text' style={{color:colour}}>{ReactHtmlParser(response)}</p>
+                            <p className='output-text' id='reader-text-output' style={{color:colour}}>{ReactHtmlParser(response)}</p>
                             <br></br>
                             <div className='output-buttons'>
                                 <SaveButton response={response}/>

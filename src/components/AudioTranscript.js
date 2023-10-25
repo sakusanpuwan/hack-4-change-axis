@@ -116,6 +116,7 @@ const AudioTranscript = () => {
 
   return (
     <div className="audio-transcript-container">
+      <br></br>
       <div className='info'>
           <h1>Audio Transcript</h1>
           <TypeAnimation 
@@ -158,11 +159,16 @@ const AudioTranscript = () => {
         )}
       </div>
       {transcribedText && !isLoading && (
+        <div>
           <div className="button-and-ruler">
               <CopyButton text={transcribedText} />
               <SaveButton response={transcribedText}/>
-              <ReadingRuler/>
+              
           </div>
+          <div className='ruler'>
+            <ReadingRuler/>
+          </div>
+        </div>
         )}
      </div>
   );

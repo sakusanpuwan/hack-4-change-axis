@@ -10,7 +10,9 @@
 .writer-audio-container button{
     background-color: white;
     color: black;
-    padding: 10px 20px;
+    /* padding: 10px 20px; */
+    height: 30px;
+    width: 96px;
     border-radius: 5px;
     text-decoration: none;
     display: inline-block;
@@ -19,4 +21,22 @@
     font-weight: bold; 
     font-family: 'Roboto Mono', monospace;
     margin: 5px;
+}
+
+.ruler button{
+    height: 30px;
+    width: 96px;
+    padding: 0;
+}
+
+.output-button button{
+    height: 30px;
+    width: 96px;
+}
+
+.output-button{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }

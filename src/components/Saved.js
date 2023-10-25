@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { doc, getDoc } from "firebase/firestore";
 import {auth , db } from '../firebase'
 import ReactHtmlParser from 'react-html-parser';
-import '../styling/ReaderText.css'
+// import '../styling/ReaderText.css'
 
 
 const Saved = () => {
@@ -22,8 +22,9 @@ const Saved = () => {
 
     return (
         <div className='output-text'>
+           <br></br>
            <h1>Saved</h1>
-           {savedTexts && displaySavedTexts}
+           <div>{savedTexts && displaySavedTexts}</div>
         </div>
     )
 }

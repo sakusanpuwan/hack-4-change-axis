@@ -67,11 +67,16 @@ const WriterAudio = () => {
             <p>{transcript}</p>
         </div>
         <br></br>
+        <div className='output-button'>
         {transcript && <CopyButton text={transcript}/>}
-        {transcript && <ReadingRuler/>}
         {transcript && <SaveButton response={transcript}/>}
         {transcript && <button id="pdfButton" onClick={exportPDF}>Export PDF</button>}
+        </div>                
+        <div className='ruler'>
+            {transcript && <ReadingRuler/>}
+        </div>
     </div>
+            
     );
 }
 

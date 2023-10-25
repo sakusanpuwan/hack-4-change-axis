@@ -112,3 +112,7 @@ input[type="file"]::file-selector-button:hover {
   justify-content: center;
   align-items: center;
 }
+
+.ruler button{
+  margin-top: 10px;
+}
