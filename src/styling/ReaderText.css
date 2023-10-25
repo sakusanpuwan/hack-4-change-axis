@@ -37,6 +37,15 @@
     font-family: 'Roboto Mono', monospace;
 }
 
+.output-text{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    width: 80%;
+    margin: auto;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
 .button-section{
     display: flex;
     flex-direction: row;
