@@ -2,6 +2,7 @@ import { useState } from "react";
 import fetchGPTResponse from "../services/FetchGPTResponse";
 import '../styling/ReaderAudio.css';
 import { Autocomplete, TextField } from "@mui/material";
+import { TypeAnimation } from "react-type-animation";
 
 
 const ReaderAudio = () => {
@@ -72,7 +73,14 @@ const ReaderAudio = () => {
             <br></br>
             <div className='info'>
                 <h1>Audio Reader</h1>
-                <p>Listen to your text</p>
+                <TypeAnimation
+                    sequence={[
+                        `Listen to your text`,
+                        500,
+                    ]}
+                    style={{ fontSize: 'medium' , width:'250px'}}
+                    repeat={Infinity}
+                />
             </div>
             <br></br>
             <form>

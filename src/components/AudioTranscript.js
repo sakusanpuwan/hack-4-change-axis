@@ -4,6 +4,7 @@ import axios from "axios";
 import { Circle } from 'rc-progress';
 import CopyButton from "./CopyButton";
 import ReadingRuler from "./ReadingRuler";
+import { TypeAnimation } from "react-type-animation";
 
 
 const REACT_APP_KEY = process.env.REACT_APP_KEY;
@@ -117,7 +118,14 @@ const AudioTranscript = () => {
       <br></br>
       <div className='info'>
           <h1>Audio Transcript</h1>
-          <p>Turn audio into text</p>
+          <TypeAnimation 
+                    sequence={[
+                        `Turn audio into text`,
+                        500,
+                    ]}
+                    style={{ fontSize: 'medium' , width:'250px'}}
+                    repeat={Infinity}
+          />
       </div>
       <div className="form-container">
         <input type="file" ref={inputRef} accept="audio/*" onChange={onFileChange} />
