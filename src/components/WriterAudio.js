@@ -6,6 +6,7 @@ import CopyButton from './CopyButton';
 import '../styling/ReaderText.css'
 import '../styling/WriterAudio.css'
 import ReadingRuler from './ReadingRuler';
+import '../styling/WriterAudio.css';
 
 
 const WriterAudio = () => {
@@ -30,7 +31,7 @@ const WriterAudio = () => {
         const {width, height} = page.getSize();
         const timesNewRoman = await pdfDoc.embedFont(StandardFonts.TimesRoman)
         page.drawText(transcript, {
-            x: 50,
+            x: 10,
             y: height - 5 * 10, // page height - 5 * font size
             size: 10,
             color: rgb(0, 0, 0),
@@ -56,6 +57,7 @@ const WriterAudio = () => {
         <button onClick={resetTranscript}>Reset 🔄</button>
         <div className='output-text'>
             <p>{transcript}</p>
+
         </div>
         <br></br>
         {transcript && <CopyButton text={transcript}/>}
