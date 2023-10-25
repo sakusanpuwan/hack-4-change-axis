@@ -206,13 +206,12 @@ const ReaderText = () => {
                             <br></br>
                             <div className='output-buttons'>
                                 <SaveButton response={response}/>
-                                <ReadingRuler/>
                                 <div className="export-section">
                                     <button id="pdfButton" onClick={exportPDF}>Export PDF</button>
                                 </div>
+                                <CopyButton text={response}/>
                             </div>
-                            <CopyButton text={response}/>
-
+                            <ReadingRuler/>
                             </div>
                         )}
                     </div>
