@@ -29,7 +29,7 @@ const WriterText = () => {
 
         <br></br>
         <div className='info'>
-            <h1>Writer Text</h1
+            <h1>Writer Text</h1>
             <p>Upgrade your text</p>
         </div>
         <br></br>

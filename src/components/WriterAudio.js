@@ -45,11 +45,13 @@ const WriterAudio = () => {
     };
     
     return (
+        
     <div className='writer-audio-container'>
         <br></br>
         <div className='info'>
             <h1>Audio Writer</h1>
             <p>Turn your voice into text</p>
+            
         </div>
         <p>Microphone: {listening ? 'on' : 'off'}</p>
         <button onClick={() => {SpeechRecognition.startListening({continuous:true})}}>Start ▶️</button>
@@ -64,6 +66,8 @@ const WriterAudio = () => {
         {transcript && <ReadingRuler/>}
         {transcript && <button id="pdfButton" onClick={exportPDF}>Export PDF</button>}
     </div>
+
+
     );
 }
 
