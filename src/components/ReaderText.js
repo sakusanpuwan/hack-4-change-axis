@@ -202,17 +202,16 @@ const ReaderText = () => {
                     <div>
                         {response && (
                             <div>
-                            <p className='output-text' style={{color:colour}}>{ReactHtmlParser(response)}</p>
-                            <br></br>
-                            <div className='output-buttons'>
-                                <SaveButton response={response}/>
-                                <ReadingRuler/>
-                                <div className="export-section">
-                                    <button id="pdfButton" onClick={exportPDF}>Export PDF</button>
+                                <p className='output-text' style={{color:colour}}>{ReactHtmlParser(response)}</p>
+                                <br></br>
+                                <div className='output-buttons'>
+                                        <SaveButton response={response}/>
+                                        <div className="export-section">
+                                            <button id="pdfButton" onClick={exportPDF}>Export PDF</button>
+                                        </div>
                                 </div>
-                            </div>
-                            <CopyButton text={response}/>
-
+                                <CopyButton text={response}/>
+                                <ReadingRuler/>
                             </div>
                         )}
                     </div>

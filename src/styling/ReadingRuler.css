@@ -1,7 +1,8 @@
 .reading-ruler{
-    width: 85%;
+    width: 700px;
     height:150px;
     margin: 0 auto;
+    background-color: #444654;
 }
 
 .ruler-button{

@@ -155,17 +155,15 @@ const AudioTranscript = () => {
             <p>Upload a file to transcribe...</p>
           </div>
         )}
-        {transcribedText && !isLoading && (
+      </div>
+      {transcribedText && !isLoading && (
           <div className="button-and-ruler">
             <div className="copy-button">
               <CopyButton text={transcribedText} />
             </div>
-            <div className="reading-ruler">
-              <ReadingRuler />
-            </div>
+              <ReadingRuler/>
           </div>
         )}
-      </div>
     </div>
   );
   
