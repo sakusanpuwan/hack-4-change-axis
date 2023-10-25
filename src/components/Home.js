@@ -1,13 +1,21 @@
 import { Link } from 'react-router-dom';
 import '../styling/Home.css'
+import { TypeAnimation } from 'react-type-animation';
 
 const Home = () => {
     return (
         <div className='home-container'>
             <div className='info'>
                 <br></br>
-                <h1>Unlocking Inclusivity Through</h1>
-                <h1>AI-Powered Literacy</h1>
+                <h1>Unlocking Inclusivity</h1>
+                <TypeAnimation 
+                    sequence={[
+                        `Through AI-Powered Literacy`,
+                        500,
+                    ]}
+                    style={{ fontSize: 'xx-large' , width:'250px'}}
+                    repeat={Infinity}
+                />
                 <p style={{fontSize:'small'}}>Step into a digital realm where inclusivity isn't just an aspiration, but an everyday reality. Our platform harnesses the power of advanced artificial intelligence to reshape the way we engage with written and spoken word, ensuring that everyone, regardless of their literacy levels or learning styles, can fully participate in the workplace.</p>
             </div>
             <br></br>
@@ -17,7 +25,7 @@ const Home = () => {
                 <div class="flip-container">
                     <Link to="/writer-audio"><div class="flip-card">
                         <div class="flip-card-front">
-                            <img src='https://static.thenounproject.com/attribution/6219314-600.png' width={'80px'}></img>
+                            <img src='https://static.thenounproject.com/attribution/6219314-600.png' width={'80px'} alt='logo'></img>
                             <p>Audio <br></br>Writer</p>
                         </div>
                         <div class="flip-card-back">
@@ -26,7 +34,7 @@ const Home = () => {
                     </div></Link>
                     <Link to="/audio-transcript"><div class="flip-card">
                         <div class="flip-card-front">
-                            <img src='https://static.thenounproject.com/attribution/5843340-600.png' width={'80px'}></img>
+                            <img src='https://static.thenounproject.com/attribution/5843340-600.png' width={'80px'} alt='logo'></img>
                             <p>Audio <br></br>Transcript</p>
                         </div>
                         <div class="flip-card-back">
@@ -35,7 +43,7 @@ const Home = () => {
                     </div></Link>
                     <Link to="/writer-text"><div class="flip-card">
                         <div class="flip-card-front">
-                            <img src='https://static.thenounproject.com/attribution/6189942-600.png' width={'80px'}></img>
+                            <img src='https://static.thenounproject.com/attribution/6189942-600.png' width={'80px'} alt='logo'></img>
                             <p>Text <br></br>Writer</p>
                         </div>
                         <div class="flip-card-back">
@@ -44,7 +52,7 @@ const Home = () => {
                     </div></Link>
                     <Link to="/reader-audio"><div class="flip-card">
                         <div class="flip-card-front">
-                            <img src='https://static.thenounproject.com/attribution/6214204-600.png' width={'80px'}></img>
+                            <img src='https://static.thenounproject.com/attribution/6214204-600.png' width={'80px'} alt='logo'></img>
                             <p>Audio <br></br>Reader</p>
                         </div>
                         <div class="flip-card-back">
@@ -53,8 +61,8 @@ const Home = () => {
                     </div></Link>
                     <Link to="/reader-text"><div class="flip-card">
                         <div class="flip-card-front">
-                            <img src='https://static.thenounproject.com/attribution/3322753-600.png' width={'80px'}></img>
-                            <p>Reader <br></br>Text</p>
+                            <img src='https://static.thenounproject.com/attribution/3322753-600.png' width={'80px'} alt='logo'></img>
+                            <p>Text <br></br>Reader</p>
                         </div>
                         <div class="flip-card-back">
                             <p>Make reading easier</p>

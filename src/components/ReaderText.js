@@ -10,6 +10,7 @@ import { PDFDocument, StandardFonts, rgb } from 'pdf-lib';
 import { saveAs } from 'file-saver';
 import CopyButton from './CopyButton';
 import ReadingRuler from './ReadingRuler';
+import { TypeAnimation } from 'react-type-animation';
 
 
 const ReaderText = () => {
@@ -151,7 +152,14 @@ const ReaderText = () => {
             <br></br>
             <div className='info'>
                 <h1>Text Reader</h1>
-                <p>Make reading easier</p>
+                <TypeAnimation
+                    sequence={[
+                        `Make reading easier`,
+                        500,
+                    ]}
+                    style={{ fontSize: 'medium' , width:'250px'}}
+                    repeat={Infinity}
+                />
             </div>
             <br></br>
             <div className='reader-text-input'>

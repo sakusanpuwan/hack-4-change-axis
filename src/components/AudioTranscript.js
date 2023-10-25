@@ -4,6 +4,7 @@ import axios from "axios";
 import { Circle } from 'rc-progress';
 import CopyButton from "./CopyButton";
 import ReadingRuler from "./ReadingRuler";
+import { TypeAnimation } from "react-type-animation";
 
 
 const REACT_APP_KEY = process.env.REACT_APP_KEY;
@@ -115,8 +116,15 @@ const AudioTranscript = () => {
   return (
     <div className="audio-transcript-container">
       <div className='info'>
-        <h1>Audio Transcript</h1>
-        <p>Turn audio into text</p>
+          <h1>Audio Transcript</h1>
+          <TypeAnimation 
+                    sequence={[
+                        `Turn audio into text`,
+                        500,
+                    ]}
+                    style={{ fontSize: 'medium' , width:'250px'}}
+                    repeat={Infinity}
+          />
       </div>
       <br></br>
       <div className="left-box">

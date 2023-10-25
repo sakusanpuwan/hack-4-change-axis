@@ -6,6 +6,7 @@ import ReactHtmlParser from 'react-html-parser';
 import '../styling/WriterText.css'
 import CopyButton from "./CopyButton";
 import ReadingRuler from "./ReadingRuler";
+import { TypeAnimation } from "react-type-animation";
 
 
 const WriterText = () => {
@@ -29,7 +30,14 @@ const WriterText = () => {
         <br></br>
         <div className='info'>
             <h1>Text Writer</h1>
-            <p>Upgrade your text</p>
+            <TypeAnimation
+                    sequence={[
+                        `Upgrade your text`,
+                        500,
+                    ]}
+                    style={{ fontSize: 'medium' , width:'250px'}}
+                    repeat={Infinity}
+            />
         </div>
         <br></br>
             <form>

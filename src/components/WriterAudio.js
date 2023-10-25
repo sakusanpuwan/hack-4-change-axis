@@ -6,6 +6,7 @@ import CopyButton from './CopyButton';
 import '../styling/ReaderText.css'
 import '../styling/WriterAudio.css'
 import ReadingRuler from './ReadingRuler';
+import { TypeAnimation } from 'react-type-animation';
 
 
 const WriterAudio = () => {
@@ -48,7 +49,14 @@ const WriterAudio = () => {
         <br></br>
         <div className='info'>
             <h1>Audio Writer</h1>
-            <p>Turn your voice into text</p>
+            <TypeAnimation 
+                    sequence={[
+                        `Turn your voice into text`,
+                        500,
+                    ]}
+                    style={{ fontSize: 'medium' , width:'250px'}}
+                    repeat={Infinity}
+            />
         </div>
         <p>Microphone: {listening ? 'on' : 'off'}</p>
         <button onClick={() => {SpeechRecognition.startListening({continuous:true})}}>Start ▶️</button>
