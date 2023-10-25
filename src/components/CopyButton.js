@@ -22,7 +22,7 @@ const CopyButton = ({text}) => {
     return (
         <div>
             {copiedMessage && <p className="copied-message">{copiedMessage}</p>}
-            <button className="copied-button" onClick={handleCopyToClipboard}>Copy to Clipboard</button>
+            <button className="copied-button" onClick={handleCopyToClipboard}>Copy</button>
         </div>
         
     )
