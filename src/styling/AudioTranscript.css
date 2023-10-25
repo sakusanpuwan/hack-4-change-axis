@@ -1,3 +1,14 @@
+.left-box {
+  width: 40%;
+  float: left;
+}
+
+.right-box {
+  width: 60%;
+  float: left;
+
+}
+
 .loading-container {
   display: flex;
   flex-direction: column;
@@ -25,20 +36,20 @@
 
 .transcription-box {
   border: 1px solid #ccc;
-  padding: 20px;
-  margin: 10px 0; /* Adjust the margin here */
+  padding: 20px 20px;
+  margin: 10px 10px; 
   border-radius: 5px;
   text-align: left;
-  max-width: 80%;
+  max-width: 100%;
+  height: 420px; 
+  overflow-y: scroll;
 }
 
 .transcription-text {
   font-size: 14px;
-  height: 100%;
   width: 100%;
   line-height: 20pt;
   text-align: left;
-  overflow-y: scroll;
 }
 
 h3 {
@@ -46,15 +57,6 @@ h3 {
   padding: 0; 
 }
 
-.copied-button{
-  margin-top: 10px; 
-}
-
-.copied-message {
-  color: green;
-  font-size: 16px;
-  margin-top: 10px;
-}
 
 
 input[type="file"]::file-selector-button {
@@ -73,7 +75,7 @@ input[type="file"]::file-selector-button:hover {
 }
 
 .audio-transcript-container {
-
+  
   width: 80%;
   margin-left: 10%;
 
@@ -84,3 +86,15 @@ input[type="file"]::file-selector-button:hover {
   align-items: center;
   justify-content: center;
 }
+
+.info{
+  text-align: left;
+}
+
+
+.copied-message {
+  color: green;
+  font-size: 16px;
+  margin-top: 10px;
+}
+

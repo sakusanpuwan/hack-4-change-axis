@@ -114,39 +114,50 @@ const AudioTranscript = () => {
 
   return (
     <div className="audio-transcript-container">
-      <br></br>
       <div className='info'>
-          <h1>Audio Transcript</h1>
-          <p>Turn audio into text</p>
+        <h1>Audio Transcript</h1>
+        <p>Turn audio into text</p>
       </div>
-      <div className="form-container">
+      <br></br>
+      <div className="left-box">
         <input type="file" ref={inputRef} accept="audio/*" onChange={onFileChange} />
-      </div>
-      {isFileUploaded && !response ? (
-        <div>
-          <p>File uploaded</p>
-          {isLoading ? (
-            <div className="loading-container">
-              <p>Transcribing...</p>
-              <div className="loading-bar">
-                <Circle
-                  percent={loadingProgress}
-                  strokeWidth={6}
-                  strokeColor="#1890ff"
-                />
+        {isFileUploaded && !response && (
+          <div>
+            <p>File uploaded</p>
+            {isLoading ? (
+              <div className="loading-container">
+                <p>Transcribing...</p>
+                <div className="loading-bar">
+                  <Circle percent={loadingProgress} strokeWidth={6} strokeColor="#1890ff" />
+                </div>
               </div>
+            ) : null}
+          </div>
+        )}
+      </div>  
+      <div className="right-box">
+        {transcribedText ? (
+          <div className="transcription-box">
+            <h3>Transcribed Text:</h3>
+            <div className="transcription-text">{transcribedText}</div>
+          </div>
+        ) : (
+          <div className="transcription-box">
+            <h3>Transcribed Text:</h3>
+            <p>Upload a file to transcribe...</p>
+          </div>
+        )}
+        {transcribedText && !isLoading && (
+          <div className="button-and-ruler">
+            <div className="copy-button">
+              <CopyButton text={transcribedText} />
             </div>
-          ) : null}
-        </div>
-      ) : null}
-      {transcribedText && !isLoading && (
-        <div className="transcription-box">
-          <h3>Transcribed Text:</h3>
-        <div className="transcription-text">{transcribedText}</div>
-        <CopyButton text={transcribedText}/>
-        <ReadingRuler/>
+            <div className="reading-ruler">
+              <ReadingRuler />
+            </div>
+          </div>
+        )}
       </div>
-      )}
     </div>
   );
   
