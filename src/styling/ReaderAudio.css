@@ -132,10 +132,8 @@
 
 
 .reader-audio-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
+    width: 80%;
+    margin-left: 10%;
 }
 
 form{

@@ -114,8 +114,11 @@ const AudioTranscript = () => {
 
   return (
     <div className="audio-transcript-container">
-      <h1>AudioTranscript</h1>
-      <p>Transcribe audio recordings</p>
+      <br></br>
+      <div className='info'>
+          <h1>Audio Transcript</h1>
+          <p>Turn audio into text</p>
+      </div>
       <div className="form-container">
         <input type="file" ref={inputRef} accept="audio/*" onChange={onFileChange} />
       </div>

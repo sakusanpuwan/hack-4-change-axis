@@ -69,7 +69,12 @@ const ReaderAudio = () => {
 
     return (
         <div className="reader-audio-container">
-            <h1>ReaderAudio</h1>
+            <br></br>
+            <div className='info'>
+                <h1>Audio Reader</h1>
+                <p>Listen to your text</p>
+            </div>
+            <br></br>
             <form>
                 <div className="input-output">
                     <textarea id="inputTextBox" rows={6} cols={50} onChange={(event) => setInputText(event.target.value)} placeholder="Enter text here..."></textarea>

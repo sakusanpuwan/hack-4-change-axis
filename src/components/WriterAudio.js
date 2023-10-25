@@ -4,6 +4,7 @@ import { PDFDocument, StandardFonts, rgb } from 'pdf-lib';
 import { saveAs } from 'file-saver';
 import CopyButton from './CopyButton';
 import '../styling/ReaderText.css'
+import '../styling/WriterAudio.css'
 import ReadingRuler from './ReadingRuler';
 
 
@@ -43,8 +44,12 @@ const WriterAudio = () => {
     };
     
     return (
-    <div>
-        <h1>WriterAudio</h1>
+    <div className='writer-audio-container'>
+        <br></br>
+        <div className='info'>
+            <h1>Audio Writer</h1>
+            <p>Turn your voice into text</p>
+        </div>
         <p>Microphone: {listening ? 'on' : 'off'}</p>
         <button onClick={() => {SpeechRecognition.startListening({continuous:true})}}>Start</button>
         <button onClick={SpeechRecognition.stopListening}>Stop</button>

@@ -26,7 +26,12 @@ const WriterText = () => {
 
     return (
         <div className="writer-text-container">
-            <h1>WriterText</h1>
+        <br></br>
+        <div className='info'>
+            <h1>Text Writer</h1>
+            <p>Upgrade your text</p>
+        </div>
+        <br></br>
             <form>
                 <textarea rows={10} cols={80} onChange={(event) => setInput(event.target.value)} placeholder="Enter text here..."></textarea>
                 <div className="button-section">

@@ -148,7 +148,11 @@ const ReaderText = () => {
 
     return (
         <div className="reader-text-container">
-            <h1>ReaderText</h1>
+            <br></br>
+            <div className='info'>
+                <h1>Text Reader</h1>
+                <p>Make reading easier</p>
+            </div>
             <br></br>
             <div className='reader-text-input'>
                 <form>
