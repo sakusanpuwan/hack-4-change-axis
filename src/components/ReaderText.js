@@ -148,7 +148,11 @@ const ReaderText = () => {
 
     return (
         <div className="reader-text-container">
-            <h1>ReaderText</h1>
+            <br></br>
+            <div className='info'>
+                <h1>Text Reader</h1>
+                <p>Make reading easier</p>
+            </div>
             <br></br>
             <div className='reader-text-input'>
                 <form>
@@ -158,8 +162,8 @@ const ReaderText = () => {
             </div>
             <div className="text-format-section">
                 <div className="button-section">
-                    <button onClick={handleKeywords} value="submit">Generate Keywords</button>  
-                    <button onClick={handleUppercaseKeywords} value="submit">Uppercase Keywords</button>  
+                    <button onClick={handleKeywords} value="submit">🔄 Keywords</button>  
+                    <button onClick={handleUppercaseKeywords} value="submit">Capital Keywords</button>  
                     <button onClick={handleBoldKeywords} value="submit">Bold Keywords</button> 
                     <button onClick={handleSyllableSpacing} value="submit">Space Syllables</button>
                     <button onClick={handleSummarise} value="submit">Summarise</button>
@@ -170,14 +174,14 @@ const ReaderText = () => {
                             <option value="Spanish">Spanish</option>
                             <option value="French">French</option>
                         </select>
-                        <button onClick={handleTranslate} value="submit">Translate</button>
+                        <button onClick={handleTranslate} value="submit">Translate 🌍</button>
                     </div>
 
                 </div> 
                 <div className="bionic-section">
                     <p>Change Bionic fixation point:</p>
                     <input type="range" id="fixationPoint" min="1" max="5" value={fixationPoint} onChange={handleFixation}/>
-                    <button id="bionicButton" onClick={handleBionic}>Generate Bionic</button>
+                    <button id="bionicButton" onClick={handleBionic}>🔄 Bionic</button>
                 </div>   
                 <input type="color" value={colour} onChange={(e) => {setColour(e.target.value)}}></input>
                 <label>Choose colour</label>
@@ -191,12 +195,16 @@ const ReaderText = () => {
                         {response && (
                             <div>
                             <p className='output-text' style={{color:colour}}>{ReactHtmlParser(response)}</p>
-                            <SaveButton response={response}/>
-                            <CopyButton text={response}/>
-                            <ReadingRuler/>
+                            <br></br>
+                            <div className='output-buttons'>
+                                <SaveButton response={response}/>
+                                <ReadingRuler/>
                                 <div className="export-section">
                                     <button id="pdfButton" onClick={exportPDF}>Export PDF</button>
                                 </div>
+                            </div>
+                            <CopyButton text={response}/>
+
                             </div>
                         )}
                     </div>

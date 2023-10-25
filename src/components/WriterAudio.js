@@ -4,6 +4,7 @@ import { PDFDocument, StandardFonts, rgb } from 'pdf-lib';
 import { saveAs } from 'file-saver';
 import CopyButton from './CopyButton';
 import '../styling/ReaderText.css'
+import '../styling/WriterAudio.css'
 import ReadingRuler from './ReadingRuler';
 import '../styling/WriterAudio.css';
 
@@ -44,20 +45,29 @@ const WriterAudio = () => {
     };
     
     return (
-    <div>
-         <h1>Writer Audio</h1>
+        
+    <div className='writer-audio-container'>
+        <br></br>
+        <div className='info'>
+            <h1>Audio Writer</h1>
+            <p>Turn your voice into text</p>
+            
+        </div>
         <p>Microphone: {listening ? 'on' : 'off'}</p>
-        <button onClick={() => {SpeechRecognition.startListening({continuous:true})}}>Start</button>
-        <button onClick={SpeechRecognition.stopListening}>Stop</button>
-        <button onClick={resetTranscript}>Reset</button>
-        <div className='AudioText'>
-            <h3>{transcript}</h3>
+        <button onClick={() => {SpeechRecognition.startListening({continuous:true})}}>Start ▶️</button>
+        <button onClick={SpeechRecognition.stopListening}>Stop ⏹️</button>
+        <button onClick={resetTranscript}>Reset 🔄</button>
+        <div className='output-text'>
+            <p>{transcript}</p>
+
         </div>
         <br></br>
         {transcript && <CopyButton text={transcript}/>}
         {transcript && <ReadingRuler/>}
         {transcript && <button id="pdfButton" onClick={exportPDF}>Export PDF</button>}
     </div>
+
+
     );
 }
 

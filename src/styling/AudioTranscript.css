@@ -60,7 +60,7 @@ h3 {
 input[type="file"]::file-selector-button {
   margin-right: 20px;
   border: none;
-  background: #084cdf;
+  background: #444654;
   padding: 10px 20px;
   border-radius: 10px;
   color: #fff;
@@ -73,14 +73,18 @@ input[type="file"]::file-selector-button:hover {
 }
 
 .audio-transcript-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+
+  width: 80%;
+  margin-left: 10%;
+
 }
 
 .form-container {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.info{
+  text-align: left;
 }
