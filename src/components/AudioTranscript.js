@@ -2,6 +2,8 @@ import "../styling/AudioTranscript.css"
 import React, { useRef, useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import { Circle } from 'rc-progress';
+import CopyButton from "./CopyButton";
+import ReadingRuler from "./ReadingRuler";
 
 
 const REACT_APP_KEY = process.env.REACT_APP_KEY;
@@ -15,10 +17,6 @@ const AudioTranscript = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [loadingProgress, setLoadingProgress] = useState(0);
   const [transcribedText, setTranscribedText] = useState('');
-  const [copiedMessage, setCopiedMessage] = useState("");
-
-
-  
 
   const onFileChange = () => {
     const selectedFile = inputRef.current.files[0];
@@ -114,28 +112,13 @@ const AudioTranscript = () => {
     }
   }, [response]);
 
-  const handleCopyToClipboard = () => {
-    const textArea = document.createElement("textarea");
-    textArea.value = transcribedText;
-    document.body.appendChild(textArea);
-    textArea.select();
-    document.execCommand("copy");
-    document.body.removeChild(textArea);
-   
-    setCopiedMessage("Copied!");
-  
-    setTimeout(() => {
-      setCopiedMessage("");
-    }, 3000); 
-  };
-  
-
-
-
   return (
     <div className="audio-transcript-container">
-      <h1>AudioTranscript</h1>
-      <p>Transcribe audio recordings</p>
+      <br></br>
+      <div className='info'>
+          <h1>Audio Transcript</h1>
+          <p>Turn audio into text</p>
+      </div>
       <div className="form-container">
         <input type="file" ref={inputRef} accept="audio/*" onChange={onFileChange} />
       </div>
@@ -160,8 +143,8 @@ const AudioTranscript = () => {
         <div className="transcription-box">
           <h3>Transcribed Text:</h3>
         <div className="transcription-text">{transcribedText}</div>
-        {copiedMessage && <p className="copied-message">{copiedMessage}</p>}
-        <button className="copied-button" onClick={handleCopyToClipboard}>Copy to Clipboard</button>
+        <CopyButton text={transcribedText}/>
+        <ReadingRuler/>
       </div>
       )}
     </div>
