@@ -7,6 +7,7 @@ import '../styling/ReaderText.css'
 import '../styling/WriterAudio.css'
 import ReadingRuler from './ReadingRuler';
 import { TypeAnimation } from 'react-type-animation';
+import SaveButton from './SaveButton';
 
 
 const WriterAudio = () => {
@@ -68,6 +69,7 @@ const WriterAudio = () => {
         <br></br>
         {transcript && <CopyButton text={transcript}/>}
         {transcript && <ReadingRuler/>}
+        {transcript && <SaveButton response={transcript}/>}
         {transcript && <button id="pdfButton" onClick={exportPDF}>Export PDF</button>}
     </div>
     );

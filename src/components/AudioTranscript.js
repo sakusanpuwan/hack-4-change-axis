@@ -5,6 +5,7 @@ import { Circle } from 'rc-progress';
 import CopyButton from "./CopyButton";
 import ReadingRuler from "./ReadingRuler";
 import { TypeAnimation } from "react-type-animation";
+import SaveButton from "./SaveButton";
 
 
 const REACT_APP_KEY = process.env.REACT_APP_KEY;
@@ -158,13 +159,12 @@ const AudioTranscript = () => {
       </div>
       {transcribedText && !isLoading && (
           <div className="button-and-ruler">
-            <div className="copy-button">
               <CopyButton text={transcribedText} />
-            </div>
+              <SaveButton response={transcribedText}/>
               <ReadingRuler/>
           </div>
         )}
-    </div>
+     </div>
   );
   
 };
