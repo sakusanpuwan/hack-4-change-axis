@@ -7,6 +7,8 @@ Axis’ primary goal is to increase accessibility by finding innovative solution
 
 It’s not just aimed at neurodiverse candidates either – as Axis aims to redefine productivity by giving every employee AI powered assistance with their reading and writing tasks. 
 
+[![AXIS Demo](https://img.youtube.com/vi/ZWovnzvM_gE/0.jpg)](https://www.youtube.com/watch?v=ZWovnzvM_gE)
+
 How To Run Our App
 --------------------------------------
 `git clone https://github.com/sakusanpuwan/hack-4-change-axis.git`\
